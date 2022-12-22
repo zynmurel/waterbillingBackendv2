@@ -12,25 +12,22 @@ class Consumer extends Model
 
     protected $fillable = [
         "user_key",
-        "id",
         "first_name",
         "last_name",
         "middle_name",
-        "phone",
         "gender",
         "birthday",
-        "barangay",
-        "purok",
-        "household_no",
+        "phone",
         "civil_status",
         "name_of_spouse",
-        "usage_type",
+        "brgyprk_id",
+        "household_no",
         "first_reading",
+        "usage_type",
         "serial_no",
         "brand",
-        "date",
+        "status",
         "delinquent",
-        "consumer_status",
         "registered_at"
     ];
 

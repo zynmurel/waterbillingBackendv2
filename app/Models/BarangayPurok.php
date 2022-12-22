@@ -30,4 +30,20 @@ class BarangayPurok extends Model
 
         return $list;
     }
+
+    static function getBrgyPrkId($brgy, $prk)
+    {
+        $key = 0;
+        $result = DB::table('barangay_puroks')
+            ->where('barangay', '=', $brgy)
+            ->where('purok', '=', $prk)
+            ->first();
+
+        if ($result) {
+            $key = $result->brgyprk_id;
+        }
+        
+        return $key;
+    }
+
 }

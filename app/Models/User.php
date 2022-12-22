@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -43,4 +44,25 @@ class User extends Authenticatable
     ];
 
     protected $primaryKey = 'user_key';
+
+    /**
+     * Get user_key using email
+     * 
+     * @param string $email
+     * @return int $key
+     */
+    static function getUserKey($email) 
+    {
+        $key = 0;
+        $result = DB::table('users')
+            ->where('email', '=', $email)
+            ->first();
+
+        if ($result) {
+            $key = $result->user_key;
+        }
+        
+        return $key;
+    }
+
 }
