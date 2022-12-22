@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
         foreach($data as $row) {
             if ($row['email'] == '' || $row['first_name'] == '' || $row['last_name'] == '') continue;
             # Populate users table
-            $row['email'] = strtolower($row['email']);
+            $row['email'] = preg_replace('/\s+/', '', strtolower($row['email']));
             $fields = app(User::class)->getFillable();
             $user = array();
             foreach ($fields as $field) {
