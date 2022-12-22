@@ -18,7 +18,7 @@ class ConsumersController extends Controller
      */
     public function index()
     {
-        return  Consumer::all();   
+        return  Consumer::getAllConsumers();   
     }
 
     /**
