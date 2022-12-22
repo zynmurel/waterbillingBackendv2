@@ -24,19 +24,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {   
         # Populate settings, e.g cubic rates, penalty rate, due date
-        #$this->createSettingsData();
+        $this->createSettingsData();
 
         # Populate Barangay - Purok Data
-        #$this->createBrgyPurokData();
+        $this->createBrgyPurokData();
 
         # Populate Users and Consumers Data
-        #$this->createConsumersData();
+        $this->createConsumersData();
 
         # Populate Service Periods Data
-        #$this->createServicePeriodData();
+        $this->createServicePeriodData();
 
         # Populate Readings Data
-        #$this->createReadingsData();
+        $this->createReadingsData();
 
         # Populate Billings Data
         $this->createBillingsData();

@@ -29,6 +29,10 @@ class Billing extends Model
         $results = DB::table('billings')
             ->get();
 
+        foreach ($results as $key => $row) {
+            $results[$key]->due_date = date("F j, Y, g:i a", $row->due_date);
+        }
+
         return $results;
     }
 

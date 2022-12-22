@@ -27,6 +27,10 @@ class Payment extends Model
         $results = DB::table('payments')
             ->get();
 
+        foreach ($results as $key => $row) {
+            $results[$key]->date_paid = date("F j, Y, g:i a", $row->date_paid);
+        }
+
         return $results;
     }
 

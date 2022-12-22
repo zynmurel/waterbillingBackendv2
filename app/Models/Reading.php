@@ -29,6 +29,10 @@ class Reading extends Model
         $results = DB::table('readings')
             ->get();
 
+        foreach ($results as $key => $row) {
+            $results[$key]->reading_date = date("F j, Y, g:i a", $row->reading_date);
+        }
+
         return $results;
     }
 
