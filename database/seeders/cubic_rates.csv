@@ -1,0 +1,11 @@
+usage_type,min_cubic,max_cubic,cubic_rate,fixed_rate
+residential,1,5,,75
+residential,6,10,15,
+residential,11,20,16,
+residential,21,50,17,
+residential,51,0,18,
+commercial,1,5,,100
+commercial,6,10,18,
+commercial,11,20,20,
+commercial,21,50,22,
+commercial,51,0,24,

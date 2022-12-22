@@ -37,7 +37,10 @@ class BarangayPuroksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $body = $request->getContent();
+        $input = json_decode($body, true);
+
+        $saved = BarangayPurok::create($input);
     }
 
     /**

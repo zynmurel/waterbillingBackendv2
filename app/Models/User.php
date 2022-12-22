@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $primaryKey = 'user_key';
+    protected $primaryKey = 'user_id';
 
     /**
      * Get user_key using email
@@ -59,7 +59,7 @@ class User extends Authenticatable
             ->first();
 
         if ($result) {
-            $key = $result->user_key;
+            $key = $result->user_id;
         }
         
         return $key;

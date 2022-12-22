@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('consumers', function (Blueprint $table) {
-            $table->id('id');
-            $table->integer('user_key');
+            $table->id('consumer_id');
+            $table->integer('user_id');
             $table->string('first_name', 100);
             $table->string('middle_name', 100);
             $table->string('last_name', 100);
@@ -31,9 +31,9 @@ return new class extends Migration
             $table->integer('serial_no');
             $table->string('brand', 20);
             $table->string('status', 20);
-            $table->string('delinquent', 20);
+            $table->boolean('delinquent');
             $table->string('registered_at', 20);
-            $table->unique(['user_key']);
+            $table->unique(['user_id']);
             $table->timestamps();
         });
     }

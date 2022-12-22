@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('readings', function (Blueprint $table) {
-            $table->id('reading_id');
-            $table->integer('reader_id');
+        Schema::create('billings', function (Blueprint $table) {
+            $table->id('billing_id');
             $table->integer('consumer_id');
             $table->integer('service_period_id');
-            $table->integer('previous_reading');
-            $table->integer('present_reading');
-            $table->integer('reading_date');
+            $table->integer('due_date');
+            $table->float('previous_bill');
+            $table->float('previous_payment');
+            $table->float('present_bill');
             $table->unique(['consumer_id','service_period_id']);
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('readings');
+        Schema::dropIfExists('billings');
     }
 };

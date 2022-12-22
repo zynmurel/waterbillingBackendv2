@@ -42,6 +42,7 @@ class ConsumersController extends Controller
         $body = $request->getContent();
         $input = json_decode($body, true);
 
+        Consumer::addNewConsumer($input);
     }
 
     /**

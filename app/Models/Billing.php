@@ -9,45 +9,44 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Consumer;
 use App\Models\ServicePeriod;
 
-class Reading extends Model
+class Billing extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "reader_id",
         "consumer_id",
         "service_period_id",
-        "previous_reading",
-        "present_reading",
-        "reading_date"
+        "due_date",
+        "previous_bill",
+        "previous_payment",
+        "present_bill"
     ];
 
-    protected $primaryKey = 'reading_id';
+    protected $primaryKey = 'billing_id';
     
-    static function getAllReadings()
+    static function getAllBillings()
     {
-        $results = DB::table('readings')
+        $results = DB::table('billings')
             ->get();
 
         return $results;
     }
 
     /**
-     * Create new reading data.
+     * Create new billing data.
      * Also called from DatabaseSeeder class.
      */
-    static function addNewReading($row)
+    static function addNewBilling($row)
     {
-        $row['reader_id'] = Consumer::getConsumerIdBasedFromEmail($row['reader']);
         $row['consumer_id'] = Consumer::getConsumerIdBasedFromEmail($row['consumer']);
         $row['service_period_id'] = ServicePeriod::getServicePeridId($row['service_period']);
-        $fields = app(Reading::class)->getFillable();
-        $reading = array();
+        $fields = app(Billing::class)->getFillable();
+        $billing = array();
         foreach ($fields as $field) {
-            $reading[$field] = $row[$field];
+            $billing[$field] = $row[$field];
         }
-        $reading['reading_date'] = strtotime($reading['reading_date']);
-        $saved = Reading::create($reading);
+        $billing['due_date'] = strtotime($billing['due_date']);
+        $saved = Billing::create($billing);
         $msg = array();
         $success = false;
         $success = false;

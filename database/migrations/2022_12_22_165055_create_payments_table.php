@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cubic_rates', function (Blueprint $table) {
-            $table->id('id');
-            $table->integer('value');
+        Schema::create('payments', function (Blueprint $table) {
+            $table->id('payment_id');
+            $table->integer('cashier_id');
+            $table->integer('consumer_id');
+            $table->integer('date_paid');
+            $table->float('amount_paid');
+            $table->unique(['consumer_id','date_paid']);
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cubic_rates');
+        Schema::dropIfExists('payments');
     }
 };

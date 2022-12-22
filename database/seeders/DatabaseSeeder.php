@@ -3,10 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Support\Facades\Hash;
+use App\Models\Settings;
 use App\Models\BarangayPurok;
 use App\Models\Consumer;
-use App\Models\User;
-
+use App\Models\ServicePeriod;
+use App\Models\Reading;
+use App\Models\Billing;
+use App\Models\Payment;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,14 +23,45 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
+        # Populate settings, e.g cubic rates, penalty rate, due date
+        #$this->createSettingsData();
+
         # Populate Barangay - Purok Data
-        $this->createBrgyPurokData();
+        #$this->createBrgyPurokData();
 
         # Populate Users and Consumers Data
-        $this->createConsumersData();
+        #$this->createConsumersData();
+
+        # Populate Service Periods Data
+        #$this->createServicePeriodData();
 
         # Populate Readings Data
-        //$this->createReadingsData();
+        #$this->createReadingsData();
+
+        # Populate Billings Data
+        $this->createBillingsData();
+
+        # Populate Payments Data
+        $this->createPaymentsData();
+    }
+
+    public function createSettingsData()
+    {
+        $csv_file = __DIR__ . '/settings.csv';
+        $data = $this->getCSVFileData($csv_file);
+        $csv_file = __DIR__ . '/cubic_rates.csv';
+        $cubic_rates = $this->getCSVFileData($csv_file);
+        $data[] = array(
+            'setting_type' => 'cubic_rates',
+            'setting_value' => json_encode($cubic_rates),
+        );
+        print "Creating 'settings' data (including cubic rates).\n\n";
+        foreach($data as $row) {
+            $saved = Settings::create($row);
+            if ($saved) {
+                print "\t{$row['setting_type']} successfully saved!!!\n";
+            }
+        }
     }
 
     public function createBrgyPurokData()
@@ -37,7 +71,9 @@ class DatabaseSeeder extends Seeder
         print "Creating 'barangay-purok' data.\n\n";
         foreach($data as $row) {
             $saved = BarangayPurok::create($row);
-            print "\t{$row['barangay']} - {$row['purok']} successfully saved!!!\n";
+            if ($saved) {
+                print "\t{$row['barangay']} - {$row['purok']} successfully saved!!!\n";
+            }
         }
     }
 
@@ -48,64 +84,65 @@ class DatabaseSeeder extends Seeder
         print "\n\nCreating 'consumers - users' data.\n";
         foreach($data as $row) {
             if ($row['email'] == '' || $row['first_name'] == '' || $row['last_name'] == '') continue;
-            # Populate users table
-            $row['email'] = preg_replace('/\s+/', '', strtolower($row['email']));
-            $fields = app(User::class)->getFillable();
-            $user = array();
-            foreach ($fields as $field) {
-                $user[$field] = $row[$field];
-            }
-            $user['password'] = Hash::make($user['password']);
-            $saved = User::create($user);
-            if ($saved) {
+            $success = Consumer::addNewConsumer($row);
+            if ($success['user']) {
                 print "\n\tUser {$row['email']} successfully saved!!!";
-                # Populate consumers table
-                $row['user_key'] = User::getUserKey($user['email']);
-                $row['brgyprk_id'] = BarangayPurok::getBrgyPrkId($row['barangay'], $row['purok']);
-                $row['birthday'] = strtotime($row['birthday']);
-                $fields = app(Consumer::class)->getFillable();
-                $consumer = array();
-                foreach ($fields as $field) {
-                    $consumer[$field] = $row[$field];
-                }
-                $saved = Consumer::create($consumer);
-                if ($saved) {
+                if ($success['consumer']) {
                     print "\n\tConsumer {$row['last_name']}, {$row['first_name']} successfully saved!!!\n";
                 }
             }
         }
     }
 
+    public function createServicePeriodData()
+    {
+        $csv_file = __DIR__ . '/service_periods.csv';
+        $data = $this->getCSVFileData($csv_file);
+        print "Creating 'service periods' data.\n\n";
+        foreach($data as $row) {
+            $row['bill_generated'] = $row['bill_generated'] ? true : false;
+            $saved = ServicePeriod::create($row);
+            if ($saved) {
+                print "\t{$row['service_period']} successfully saved!!!\n";
+            }
+        }
+    }
+
     public function createReadingsData()
     {
-        $csv_file = __DIR__ . '/consumers.csv';
+        $csv_file = __DIR__ . '/readings.csv';
         $data = $this->getCSVFileData($csv_file);
-        print "\n\nCreating 'consumers - users' data.\n";
+        print "\n\nCreating 'readings' data.\n";
         foreach($data as $row) {
-            if ($row['email'] == '' || $row['first_name'] || $row['last_name']) continue;
-            # Populate users table
-            $fields = app(User::class)->getFillable();
-            $user = array();
-            foreach ($fields as $field) {
-                $user[$field] = $row[$field];
+            $success = Reading::addNewReading($row);
+            if ($success) {
+                print "\tWater reading of {$row['consumer']} by {$row['reader']} successfully saved!!!\n";
             }
-            $user['password'] = Hash::make($user['password']);
-            $saved = User::create($user);
-            if ($saved) {
-                print "\n\tUser {$row['email']} successfully saved!!!";
-                # Populate consumers table
-                $row['user_key'] = User::getUserKey($user['email']);
-                $row['brgyprk_id'] = BarangayPurok::getBrgyPrkId($row['barangay'], $row['purok']);
-                $row['birthday'] = strtotime($row['birthday']);
-                $fields = app(Consumer::class)->getFillable();
-                $consumer = array();
-                foreach ($fields as $field) {
-                    $consumer[$field] = $row[$field];
-                }
-                $saved = Consumer::create($consumer);
-                if ($saved) {
-                    print "\n\tConsumer {$row['last_name']}, {$row['first_name']} successfully saved!!!\n";
-                }
+        }
+    }
+
+    public function createBillingsData()
+    {
+        $csv_file = __DIR__ . '/billings.csv';
+        $data = $this->getCSVFileData($csv_file);
+        print "\n\nCreating 'billings' data.\n";
+        foreach($data as $row) {
+            $success = Billing::addNewBilling($row);
+            if ($success) {
+                print "\tWater billing of {$row['consumer']} successfully saved!!!\n";
+            }
+        }
+    }
+
+    public function createPaymentsData()
+    {
+        $csv_file = __DIR__ . '/payments.csv';
+        $data = $this->getCSVFileData($csv_file);
+        print "\n\nCreating 'payments' data.\n";
+        foreach($data as $row) {
+            $success = Payment::addNewPayment($row);
+            if ($success) {
+                print "\tPayment of {$row['consumer']} successfully saved!!!\n";
             }
         }
     }
