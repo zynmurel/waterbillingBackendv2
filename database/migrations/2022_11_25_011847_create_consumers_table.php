@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('status', 20);
             $table->string('delinquent', 20);
             $table->string('registered_at', 20);
+            $table->unique(['user_key']);
             $table->timestamps();
         });
     }
