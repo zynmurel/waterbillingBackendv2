@@ -22,7 +22,6 @@ Route::post('/register',[AuthController::class,'register']);
     Route::post('/logout',[AuthController::class,'logout']);
     Route::resource('/brgyprk',BarangayPuroksController::class);
     Route::resource('/consumer',ConsumersController::class);
-    Route::resource('/reading',ReadingsController::class);
+    Route::resource('/reading',ReadingsController::class);         
     Route::resource('/cubicrate',CubicRatesController::class);
 //});
-
