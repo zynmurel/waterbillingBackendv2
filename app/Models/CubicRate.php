@@ -24,3 +24,5 @@ class CubicRate extends Model
       }
           protected $primaryKey = 'id';
 }
+
+
