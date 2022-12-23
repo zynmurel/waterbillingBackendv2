@@ -44,7 +44,7 @@ class Reading extends Model
     {
         $row['reader_id'] = Consumer::getConsumerIdBasedFromEmail($row['reader']);
         $row['consumer_id'] = Consumer::getConsumerIdBasedFromEmail($row['consumer']);
-        $row['service_period_id'] = ServicePeriod::getServicePeridId($row['service_period']);
+        $row['service_period_id'] = ServicePeriod::getServicePeriodId($row['service_period']);
         $fields = app(Reading::class)->getFillable();
         $reading = array();
         foreach ($fields as $field) {
@@ -60,6 +60,30 @@ class Reading extends Model
         }
 
         return $success;
+    }
+
+    static function getServicePeriodReadings($service_period_id)
+    {
+        // Get saved license settings for the customer, update defaultValue if available
+        $fields = [
+            'readings.previous_reading',
+            'readings.present_reading',
+            'readings.reading_date',
+            'consumers.first_name',
+            'consumers.middle_name',
+            'consumers.last_name',
+            'consumers.delinquent',
+            'barangay',
+            'purok',
+        ];
+        $results = DB::table('readings')
+            ->select($fields)
+            ->leftJoin('consumers', 'readings.consumer_id', '=', 'consumers.consumer_id')
+            ->leftJoin('barangay_puroks', 'consumers.brgyprk_id', '=', 'barangay_puroks.brgyprk_id')
+            ->where('yh_customers.service_period_id', '=', $service_period_id);
+            
+        return $results;
+
     }
 
 }

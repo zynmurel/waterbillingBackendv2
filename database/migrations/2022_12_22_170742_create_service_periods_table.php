@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('service_periods', function (Blueprint $table) {
             $table->id('service_period_id');
             $table->string('service_period');
-            $table->boolean('bill_generated');
+            $table->boolean('is_current');
             $table->unique(['service_period']);
             $table->timestamps();
         });

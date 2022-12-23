@@ -3,8 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangayPuroksController;
 use App\Http\Controllers\ConsumersController;
-use App\Http\Controllers\CubicRatesController;
 use App\Http\Controllers\ReadingsController;
+use App\Http\Controllers\ServicePeriodController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +20,9 @@ Route::post('/register',[AuthController::class,'register']);
 //private routes
 //Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::post('/logout',[AuthController::class,'logout']);
-    Route::resource('/brgyprk',BarangayPuroksController::class);
-    Route::resource('/consumer',ConsumersController::class);
-    Route::resource('/reading',ReadingsController::class);
-    Route::resource('/cubicrate',CubicRatesController::class);
+    Route::resource('/brgyprk', BarangayPuroksController::class);
+    Route::resource('/consumer', ConsumersController::class);
+    Route::resource('/reading', ReadingsController::class);
+    Route::resource('/serviceperiod', ServicePeriodController::class);
 //});
 

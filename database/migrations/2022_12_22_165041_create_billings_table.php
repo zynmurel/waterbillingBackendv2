@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('due_date');
             $table->float('previous_bill');
             $table->float('previous_payment');
+            $table->float('penalty');
             $table->float('present_bill');
             $table->unique(['consumer_id','service_period_id']);
             $table->timestamps();

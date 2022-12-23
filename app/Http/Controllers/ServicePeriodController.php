@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reading;
+use App\Models\ServicePeriod;
 use Illuminate\Http\Request;
 
-class ReadingsController extends Controller
+class ServicePeriodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class ReadingsController extends Controller
      */
     public function index()
     {
-        return  Reading::all();   
+        $data = ServicePeriod::getAllServicePeriods();
+
+        return $data;
     }
 
     /**
@@ -35,21 +37,21 @@ class ReadingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $body = $request->getContent();
+        $input = json_decode($body, true);
+
+        $saved = BarangayPurok::create($input);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id customer id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $readings = Reading::getServicePeriodReadings($id);
-
-        //return $readings;
-        //return $this->sendResponse($readings, 'Readings retrieved successfully.');;
+        //
     }
 
     /**

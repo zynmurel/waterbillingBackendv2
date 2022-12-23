@@ -13,12 +13,12 @@ class ServicePeriod extends Model
     protected $fillable = [
         "service_period_id",
         "service_period",
-        "bill_generated"
+        "is_current"
     ];
 
     protected $primaryKey = 'service_period_id';
 
-    static function getServicePeridId($service_period)
+    static function getServicePeriodId($service_period)
     {
         $key = 0;
         $result = DB::table('service_periods')
@@ -30,5 +30,21 @@ class ServicePeriod extends Model
         }
         
         return $key;
+    }
+
+    static function getAllServicePeriods()
+    {
+        $results = DB::table('service_periods')
+            ->orderBy('service_period_id', 'DESC')
+            ->get();
+
+        $list = array();
+        if(count($results)) {
+            foreach ($results as $key => $item){
+                $list[$item->service_period_id] = $item->service_period;
+            }
+        }
+
+        return $list;
     }
 }

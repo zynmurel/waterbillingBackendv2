@@ -19,6 +19,7 @@ class Billing extends Model
         "due_date",
         "previous_bill",
         "previous_payment",
+        "penalty",
         "present_bill"
     ];
 
@@ -43,13 +44,14 @@ class Billing extends Model
     static function addNewBilling($row)
     {
         $row['consumer_id'] = Consumer::getConsumerIdBasedFromEmail($row['consumer']);
-        $row['service_period_id'] = ServicePeriod::getServicePeridId($row['service_period']);
+        $row['service_period_id'] = ServicePeriod::getServicePeriodId($row['service_period']);
         $fields = app(Billing::class)->getFillable();
         $billing = array();
         foreach ($fields as $field) {
             $billing[$field] = $row[$field];
         }
         $billing['due_date'] = strtotime($billing['due_date']);
+        $billing['penalty'] = floatval($billing['penalty']);
         $saved = Billing::create($billing);
         $msg = array();
         $success = false;

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   
+    {
         # Populate settings, e.g cubic rates, penalty rate, due date
         $this->createSettingsData();
 
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
         $data = $this->getCSVFileData($csv_file);
         print "Creating 'service periods' data.\n\n";
         foreach($data as $row) {
-            $row['bill_generated'] = $row['bill_generated'] ? true : false;
+            $row['is_current'] = $row['is_current'] ? true : false;
             $saved = ServicePeriod::create($row);
             if ($saved) {
                 print "\t{$row['service_period']} successfully saved!!!\n";
