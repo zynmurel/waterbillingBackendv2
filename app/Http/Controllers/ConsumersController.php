@@ -42,7 +42,11 @@ class ConsumersController extends Controller
         $body = $request->getContent();
         $input = json_decode($body, true);
 
-        Consumer::addNewConsumer($input);
+        $newConsumer =Consumer::addNewConsumer($input);
+
+        return response()->json([
+            "data"=>$input
+        ]);
     }
 
     /**
@@ -53,7 +57,7 @@ class ConsumersController extends Controller
      */
     public function show($id)
     {
-        //
+        return Consumer::findOrFail($id);
     }
 
     /**
@@ -76,7 +80,6 @@ class ConsumersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

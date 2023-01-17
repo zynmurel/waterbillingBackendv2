@@ -21,8 +21,14 @@ Route::post('/register',[AuthController::class,'register']);
 //Route::group(['middleware' => ['auth:sanctum']], function (){
     Route::post('/logout',[AuthController::class,'logout']);
     Route::resource('/brgyprk', BarangayPuroksController::class);
+
     Route::resource('/consumer', ConsumersController::class);
+    Route::get('/consumer/{consumer}', [ConsumersController::class, 'show']);
+
     Route::resource('/reading', ReadingsController::class);
+    Route::get('/readings/{reading}', [ReadingsController::class, 'show']);
+    
     Route::resource('/serviceperiod', ServicePeriodController::class);
+    Route::post('addmaui',[ConsumersController::class, 'add']);
 //});
 

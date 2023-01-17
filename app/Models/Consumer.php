@@ -34,7 +34,7 @@ class Consumer extends Model
         "registered_at"
     ];
 
-    protected $primaryKey = 'consumer_id';
+    protected $primaryKey = 'user_id';
 
     static function getAllConsumers()
     {

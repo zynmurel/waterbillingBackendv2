@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReadingRequest;
 use App\Models\Reading;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,15 @@ class ReadingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreReadingRequest $request)
     {
-        //
+        $reading = Reading::create($request->all());
+
+        return response()->json([
+            "status"=>true,
+            "message"=> "Reading is added succesfully",
+            "newReading"=>$reading,
+        ],200);
     }
 
     /**
@@ -46,10 +53,11 @@ class ReadingsController extends Controller
      */
     public function show($id)
     {
-        $readings = Reading::getServicePeriodReadings($id);
+        //$readings = Reading::getServicePeriodReadings($id);
 
         //return $readings;
-        //return $this->sendResponse($readings, 'Readings retrieved successfully.');;
+        //return $this->sendResponse($readings, 'Readings retrieved successfully.');
+        return Reading::findOrFail($id);
     }
 
     /**
