@@ -28,7 +28,7 @@ class AuthController extends Controller
                 'user' => $user,
                 'token' => $user->createToken('Api Token of ' . $user->user_type)->plainTextToken
             ]); 
-    }
+    } 
 
     public function register(StoreUserRequest $request)
     {

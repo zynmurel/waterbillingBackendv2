@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id('consumer_id');
             $table->integer('user_id');
             $table->string('first_name', 100);
-            $table->string('middle_name', 100);
+            $table->string('middle_name', 100)->nullable();
             $table->string('last_name', 100);
             $table->string('gender', 10);
             $table->integer('birthday');
             $table->string('phone', 15);
             $table->string('civil_status', 15);
-            $table->string('name_of_spouse');
+            $table->string('name_of_spouse')->nullable();
             $table->integer('brgyprk_id');
             $table->integer('household_no');
             $table->integer('first_reading');
