@@ -26,9 +26,12 @@ Route::post('/register',[AuthController::class,'register']);
     Route::get('/consumer/{consumer}', [ConsumersController::class, 'show']);
 
     Route::resource('/reading', ReadingsController::class);
-    Route::get('/readings/{reading}', [ReadingsController::class, 'show']);
+    Route::get('/readingsBillingsPayments/{reading}', [ReadingsController::class, 'readingBillingsPayments']);
+    Route::get('/inquire/{reading}', [ReadingsController::class, 'inquire']);
+    Route::get('/meterReadings/{reading}', [ReadingsController::class, 'meterReadings']);
+    Route::get('/reports/{reading}', [ReadingsController::class, 'reports']);
     
-    Route::resource('/serviceperiod', ServicePeriodController::class);
+    Route::resource('/serviceperiod', ServicePeriodController::class); 
     Route::post('addmaui',[ConsumersController::class, 'add']);
 //});
 

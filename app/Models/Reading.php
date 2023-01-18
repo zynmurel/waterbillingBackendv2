@@ -70,7 +70,7 @@ class Reading extends Model
             'readings.present_reading',
             'readings.reading_date',
             'consumers.first_name',
-            'consumers.middle_name',
+            'consumers.middle_name', 
             'consumers.last_name',
             'consumers.delinquent',
             'barangay',

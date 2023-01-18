@@ -31,7 +31,7 @@ class UpdateConsumerRequest extends FormRequest
             "birthday" => "required|max:100",
             "phone" => "required|max:20",
             "civil_status" => "required|max:20",
-            "name_of_spouse" => "",
+            "name_of_spouse" => "max:150",
             "brgyprk_id" => "required|max:20",
             "household_no" => "required|max:100",
             "first_reading" => "required|max:20",
