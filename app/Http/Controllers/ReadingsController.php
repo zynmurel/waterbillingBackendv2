@@ -118,27 +118,49 @@ class ReadingsController extends Controller
     
     public function meterReadings($id)
     {
-        $latestReadingBilling = [
-            ['yiyle' => "Maui",'name' => "akdn"],
-            ['tiew' => "Huhu", 'name' => "Maui"]
+        $meterReading = [
+            [
+                "reading_id" =>1,
+                "consumer_id" => "0000000001",
+                "consumer_name" => "Andrei Chatto",
+                "barangay" => "Cantalid",
+                "purok" => 2,
+                "service_period" => "2022-January",
+                "prev_reading" => 10,
+                "present_reading" => 21
+            ],
+            [
+                "reading_id" =>2,
+                "consumer_id" => "0000000002",
+                "consumer_name" => "Eric Maglajos",
+                "barangay" => "Boctol",
+                "purok" => 3,
+                "service_period" => "2022-January",
+                "prev_reading" => 15,
+                "present_reading" => 26
+            ]
         ];
         return response()->json([
             "status"=>true,
             "message"=> "Meter Readings is found",
-            "newReading"=>$latestReadingBilling,
+            "newReading"=>$meterReading,
         ],200);
     }
 
     public function reports($id)
     {
-        $latestReadingBilling = [
-            ['yiyle' => "Maui",'name' => "akdn"],
-            ['tiew' => "Huhu", 'name' => "Maui"]
+        $reports =  [
+                "report_id"=>2,
+                "service_period"=>"2022-February",
+                "totalConsumers"=>1000,
+                "totalDelinquent"=>20,
+                "totalCollection"=>40204
         ];
+        
         return response()->json([
             "status"=>true,
             "message"=> "Reports is found",
-            "newReading"=>$latestReadingBilling,
+            "newReading"=>$reports,
         ],200);
     }
 
