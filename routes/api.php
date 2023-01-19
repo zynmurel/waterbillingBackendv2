@@ -33,6 +33,7 @@ Route::post('/register',[AuthController::class,'register']);
     Route::get('/reports/{reading}', [ReadingsController::class, 'reports']);
 
     Route::resource('/user', UserController::class);
+    Route::put('/userPassword/{id}', [UserController::class, 'updatePassword']);
     
     Route::resource('/serviceperiod', ServicePeriodController::class); 
     Route::post('addmaui',[ConsumersController::class, 'add']);

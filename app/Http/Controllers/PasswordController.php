@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserEmailRequest;
-use App\Http\Requests\StoreUserPasswordRequest;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class PasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $admin =  User::where('user_type', 'Admin')->get();
-        $reader =  User::where('user_type', 'Reader')->get();
-        $cashier =  User::where('user_type', 'Cashier')->get();
-
-        return response()->json([
-            "status"=>true,
-            "admin"=>$admin,
-            "cashier"=>$cashier,
-            "reader"=>$reader
-        ],200); 
+        //
     }
 
     /**
@@ -79,27 +66,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUserEmailRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $newemail = [
-            "email" => $request->email
-        ];
-        User::where('user_id', $id) ->update($newemail);
-        return response()->json([
-            "data"=>"email updated!",
-            "consumer"=>$newemail
-        ]);
-    }
-    public function updatePassword(StoreUserPasswordRequest $request, $id)
-    {
-        $newpassword = [
-            "password" => Hash::make($request->password)
-        ];
-        User::where('user_id', $id) ->update($newpassword);
-        return response()->json([
-            "data"=>"password updated!",
-            "consumer"=>$newpassword
-        ]);
+        //
     }
 
     /**
