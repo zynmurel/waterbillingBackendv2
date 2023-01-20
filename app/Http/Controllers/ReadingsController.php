@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReadingRequest;
+use App\Models\BarangayPurok;
+use App\Models\Billing;
+use App\Models\Consumer;
+use App\Models\Payment;
 use App\Models\Reading;
+use App\Models\ServicePeriod;
+use Carbon\Carbon;
+use Dotenv\Store\File\Reader;
 use Illuminate\Http\Request;
 
 class ReadingsController extends Controller
@@ -56,6 +63,25 @@ class ReadingsController extends Controller
      * @param  int  $id customer id
      * @return \Illuminate\Http\Response
      */
+
+    public function showByServicePeriod($month, $year)
+    {
+        $service_period_id = ServicePeriod::where("service_period", $year."-".$month)->pluck('service_period_id');
+        $readings = Reading::where('service_period_id', $service_period_id[0])->get();
+        foreach($readings as $read){
+            $read["consumer"]= Consumer::where('consumer_id', $read["consumer_id"])->get()[0];
+            $read["consumer_name"] = $read["consumer"]["first_name"]." ".$read["consumer"]["middle_name"]." ".$read["consumer"]["last_name"];
+            $read["barangay"] = BarangayPurok::where("brgyprk_id", $read["consumer"]["brgyprk_id"])->pluck("barangay")[0];
+            $read["purok"] = BarangayPurok::where("brgyprk_id", $read["consumer"]["brgyprk_id"])->pluck("purok")[0];
+            $read["consumer_id"] =  str_pad($read["consumer_id"], 10, '0', STR_PAD_LEFT);
+        }
+        return response()->json([
+            "status"=>true,
+            "message"=> "Date is found",
+            "newReading"=>$readings
+        ],200);
+    }
+
     public function readingBillingsPayments($id)
     {
         //$readings = Reading::getServicePeriodReadings($id);
@@ -65,34 +91,57 @@ class ReadingsController extends Controller
 
         //GET ALL READINGS , BILLINGS (Decending)
         $latestReadingBilling = [[
-            "consumer_id"=> "0000000001",
-            "bill"=> 18, 
-            "penalty" => 0,
-            "reader_id" => 12,
-            "reading" =>  10,
-            "reading_id" =>  5,
-            "service_period" => "2022-December",
-            "total_reading" => 4
+            "billing_id"=> 1,
+            "consumer_id"=> 27,
+            "service_period"=> "2022-December",
+            "due_date"=> 1645401600,
+            "previous_bill"=> 114,
+            "previous_payment"=> 206,
+            "penalty"=> 39,
+            "present_bill"=> 92,
+            "created_at"=> "2023-01-17T16:41:14.000000Z",
+            "updated_at"=> "2023-01-17T16:41:14.000000Z"
         ], 
         [
-            "consumer_id"=> "0000000001",
-            "bill"=> 18, 
-            "penalty" => 12,
-            "reader_id" => 12,
-            "reading" =>  10,
-            "reading_id" =>  4,
-            "service_period" => "2022-November",
-            "total_reading" => 4
+            "billing_id"=> 1,
+            "consumer_id"=> 27,
+            "service_period"=> "2022-November",
+            "due_date"=> 1645401600,
+            "previous_bill"=> 114,
+            "previous_payment"=> 206,
+            "penalty"=> 39,
+            "present_bill"=> 92,
+            "created_at"=> "2023-01-17T16:41:14.000000Z",
+            "updated_at"=> "2023-01-17T16:41:14.000000Z"
         ]];
         return response()->json([
             "status"=>true,
             "message"=> "Consumer Bill Record is found",
-            "newReading"=>$latestReadingBilling,
+            "billing"=>$latestReadingBilling,
         ],200);
     }
 
     public function inquire($id)
-    {
+    {  $consumer = Consumer::where("consumer_id", $id)->get()[0];
+        $consumer["barangay"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("barangay")[0];
+        $consumer["purok"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("purok")[0];
+        $consumer["consumer_name"] = $consumer["first_name"]." ".$consumer["middle_name"]." ".$consumer["last_name"];
+        $reading = Reading::where("consumer_id", $id)->latest()->first();
+        $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 10, '0', STR_PAD_LEFT);
+        $consumer["service_period"] = null;
+        $consumer["reading"] = $reading;
+        $consumer["billing"] = null;
+        $consumer["payment"] = null;
+
+        if($reading) {
+            $billing = Billing::where("consumer_id", $consumer["consumer_id"])->where("service_period_id",$reading["service_period_id"])->get();
+            $payment = Payment::where("consumer_id", $consumer["consumer_id"])->where("service_period_id",$reading["service_period_id"])->get();
+            $service_period = ServicePeriod::where("service_period_id", $reading["service_period_id"])->pluck("service_period")[0];
+            $consumer["service_period"] = $service_period;
+            $consumer["billing"] = $billing;
+            $consumer["payment"] = $payment;
+        }
+        
         $latestReadingBilling = [
             "consumer_id" => "0000000001",
             "consumer_name" => "Andrei Chatto",
@@ -112,7 +161,8 @@ class ReadingsController extends Controller
             "status"=>true,
             "message"=> "Inquire is found",
             "newReading"=>$latestReadingBilling,
-            "id"=>$id
+            "id"=>$id,
+            "billing"=>$consumer
         ],200);
     }
     

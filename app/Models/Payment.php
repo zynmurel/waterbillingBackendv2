@@ -16,6 +16,7 @@ class Payment extends Model
     protected $fillable = [
         "cashier_id",
         "consumer_id",
+        "service_period_id",
         "date_paid",
         "amount_paid"
     ];
@@ -39,7 +40,9 @@ class Payment extends Model
      * Also called from DatabaseSeeder class.
      */
     static function addNewPayment($row)
-    {
+    {   
+        $serivep = ServicePeriod::where("service_period", $row["service_period"])->pluck("service_period_id");
+        $row["service_period_id"] = $serivep[0];
         $row['cashier_id'] = Consumer::getConsumerIdBasedFromEmail($row['cashier']);
         $row['consumer_id'] = Consumer::getConsumerIdBasedFromEmail($row['consumer']);
         $fields = app(Payment::class)->getFillable();

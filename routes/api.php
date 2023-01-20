@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangayPuroksController;
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ConsumersController;
 use App\Http\Controllers\ReadingsController;
 use App\Http\Controllers\ServicePeriodController;
@@ -31,9 +32,12 @@ Route::post('/register',[AuthController::class,'register']);
     Route::get('/inquire/{reading}', [ReadingsController::class, 'inquire']);
     Route::get('/meterReadings/{reading}', [ReadingsController::class, 'meterReadings']);
     Route::get('/reports/{reading}', [ReadingsController::class, 'reports']);
+    Route::get('/showByServicePeriod/{month}/{year}', [ReadingsController::class, 'showByServicePeriod']);
 
     Route::resource('/user', UserController::class);
     Route::put('/userPassword/{id}', [UserController::class, 'updatePassword']);
+
+    Route::resource('/billing', BillingController::class);
     
     Route::resource('/serviceperiod', ServicePeriodController::class); 
     Route::post('addmaui',[ConsumersController::class, 'add']);

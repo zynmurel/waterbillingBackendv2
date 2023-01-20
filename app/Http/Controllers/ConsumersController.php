@@ -47,7 +47,7 @@ class ConsumersController extends Controller
         $body = $request->getContent();
         $input = json_decode($body, true);
 
-        $newConsumer =Consumer::addNewConsumer($input);
+        $newConsumer =Consumer::addNewConsumer($input); 
 
         return response()->json([
             "data"=>$input

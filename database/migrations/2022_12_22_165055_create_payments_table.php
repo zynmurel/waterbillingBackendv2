@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('payment_id');
             $table->integer('cashier_id');
             $table->integer('consumer_id');
+            $table->integer('service_period_id');
             $table->integer('date_paid');
             $table->float('amount_paid');
             $table->unique(['consumer_id','date_paid']);

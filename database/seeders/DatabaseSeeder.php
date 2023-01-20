@@ -143,7 +143,7 @@ class DatabaseSeeder extends Seeder
             $success = Payment::addNewPayment($row);
             if ($success) {
                 print "\tPayment of {$row['consumer']} successfully saved!!!\n";
-            }
+            } 
         }
     }
 
