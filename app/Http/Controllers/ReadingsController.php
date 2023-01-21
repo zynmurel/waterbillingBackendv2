@@ -197,20 +197,35 @@ class ReadingsController extends Controller
         ],200);
     }
 
-    public function reports($id)
+    public function collectionReports($year, $month)
     {
-        $reports =  [
-                "report_id"=>2,
-                "service_period"=>"2022-February",
-                "totalConsumers"=>1000,
-                "totalDelinquent"=>20,
-                "totalCollection"=>40204
-        ];
+        $collectionReport =[];
+        $service_period_id = ServicePeriod::where("service_period", $year."-".$month)->pluck("service_period_id")[0];
+        if($service_period_id){
+        $collectionReport["totalBilling"] = Billing::where("service_period_id", $service_period_id)->count();
+        $collectionReport["totalPayments"] = Payment::where("service_period_id", $service_period_id)->count();
+        $collectionReport["service_period_id"] = ServicePeriod::where("service_period", $year."-".$month)->pluck("service_period")[0];
+        $collectionReport["totalCollection"] = Payment::where('service_period_id', $service_period_id)->sum("amount_paid");
+        }
+
         
         return response()->json([
             "status"=>true,
-            "message"=> "Reports is found",
-            "newReading"=>$reports,
+            "message"=> "Collection Report is found",
+            "collectionReport"=>$collectionReport
+        ],200);
+    }
+    public function consumerReport()
+    {
+        $consumerReport = [];
+        $consumerReport["totalConsumers"] = Consumer::all()->count();
+        $consumerReport["totalDelinquent"] = Consumer::where("delinquent", 1)->count();
+        $consumerReport["totalDisconnected"] = Consumer::where("status", "Disconnected")->count();
+        
+        return response()->json([
+            "status"=>true,
+            "message"=> "Collection Report is found",
+            "consumerReport"=>$consumerReport
         ],200);
     }
 

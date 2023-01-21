@@ -13,7 +13,7 @@ class Settings extends Model
     protected $fillable = [
         "settings_id",
         "setting_type",
-        "setting_value"
+        "setting_value",
     ];
 
     protected $primaryKey = 'settings_id';
@@ -23,7 +23,7 @@ class Settings extends Model
         $results = DB::table('settings')
             ->get();
         
-        if ($result) {
+        if ($results) {
             foreach ($results as $key => $row) {
                 $data[$row->setting_type] = $row->setting_value;
             }
