@@ -38,7 +38,7 @@ class Consumer extends Model
 
     static function getAllConsumers()
     {
-        $results = DB::table('consumers')->where("consumer_id","<>",2)
+        $results = DB::table('consumers')
             ->get();
         foreach ($results as $key => $row) {
             $results[$key]->user_type = User::where("user_id", $results[$key]->user_id)->pluck("user_type")[0];

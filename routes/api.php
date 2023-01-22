@@ -4,10 +4,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangayPuroksController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ConsumersController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReadingsController;
 use App\Http\Controllers\ServicePeriodController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
+use App\Models\Payment;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Routing\RouteRegistrar;
@@ -45,6 +47,8 @@ Route::post('/register',[AuthController::class,'register']);
 
     Route::resource('/settings', SettingsController::class);
     Route::put("settingUpdate/{id}", [SettingsController::class, 'updateSettings']);
+
+    Route::post("storePayment/{id}", [PaymentController::class, 'storePayment']);
 
     Route::resource('/user', UserController::class);
     Route::put('/userPassword/{id}', [UserController::class, 'updatePassword']);

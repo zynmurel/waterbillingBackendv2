@@ -63,7 +63,7 @@ class BillingController extends Controller
 
     public function showReadBillPayConsumer( $id ){
         $id = $id;
-        $billing = Billing::where("consumer_id", $id)->get();
+        $billing = Billing::where("consumer_id", $id)->orderBy('created_at', 'desc')->get();
         if($billing){
             foreach($billing as $bill){
                 $service_period = ServicePeriod::where('service_period_id', $bill['service_period_id'])->pluck("service_period");
@@ -82,6 +82,7 @@ class BillingController extends Controller
                 }
             }
         }
+
         
         return response()->json([
             "data"=>"Go!",

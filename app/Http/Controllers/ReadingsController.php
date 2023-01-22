@@ -144,25 +144,9 @@ class ReadingsController extends Controller
             $consumer["payment"] = $payment;
         }
         
-        $latestReadingBilling = [
-            "consumer_id" => "0000000001",
-            "consumer_name" => "Andrei Chatto",
-            "barangay" => "Cantalid",
-            "usage_type"=>"Residential",
-            "purok" => 2,
-            "service_period" => "2022-January",
-            "prev_reading" => 10,
-            "present_reading" => 21,
-            "prev_bill" =>  10,
-            "penalty" => 25,
-            "present_bill" =>  5,
-            "total_reading" => 4,
-            "status"=>"Connected"
-        ];
         return response()->json([
             "status"=>true,
             "message"=> "Inquire is found",
-            "newReading"=>$latestReadingBilling,
             "id"=>$id,
             "billing"=>$consumer
         ],200);
@@ -214,7 +198,8 @@ class ReadingsController extends Controller
         return response()->json([
             "status"=>true,
             "message"=> "Collection Report is found",
-            "collectionReport"=>$collectionReport
+            "collectionReport"=>$collectionReport,
+            "consumers" => ReadingsController::consumerReport()
         ],200);
     }
     public function consumerReport()
@@ -225,16 +210,14 @@ class ReadingsController extends Controller
         $consumerReport["totalDisconnected"] = Consumer::where("status", "Disconnected")->count();
         
         return response()->json([
-            "status"=>true,
-            "message"=> "Collection Report is found",
             "consumerReport"=>$consumerReport
         ],200);
     }
     public function toReadConsumers(){
         $consumers = Consumer::all();
         $dateAfter = Carbon::now()->subMonth()->format('Y')."-".Carbon::now()->subMonth()->shortEnglishMonth;
-        $service_period_id = ServicePeriod::where("service_period_id", "2")->pluck("service_period_id")[0];
-        $service_period = ServicePeriod::where("service_period_id", "2")->pluck("service_period")[0];
+        $service_period_id = ServicePeriod::where("service_period", $dateAfter)->pluck("service_period_id")[0];
+        $service_period = ServicePeriod::where("service_period_id", $service_period_id)->pluck("service_period")[0];
         foreach($consumers as $consumer){
             $consumer["service_period_id"] = null;
             $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 10, '0', STR_PAD_LEFT);
