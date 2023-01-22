@@ -34,16 +34,21 @@ Route::post('/register',[AuthController::class,'register']);
     Route::get('/inquire/{reading}', [ReadingsController::class, 'inquire']);
     Route::get('/meterReadings/{reading}', [ReadingsController::class, 'meterReadings']);
     Route::get('/showByServicePeriod/{month}/{year}', [ReadingsController::class, 'showByServicePeriod']);
-    Route::get('/showReadBillPayConsumer/{id}/', [BillingController::class, 'showReadBillPayConsumer']);
     Route::get('/collectionReports/{year}/{month}', [ReadingsController::class, 'collectionReports']);
     Route::get('/consumerReport', [ReadingsController::class, 'consumerReport']);
+    Route::get('/toReadConsumers', [ReadingsController::class, 'toReadConsumers']);
+    Route::get('/findBillReading/{id}', [ReadingsController::class, 'findBillReading']);
+    Route::post('/storeBillReading', [ReadingsController::class, 'storeBillReading']);
+
+    Route::get('/showReadBillPayConsumer/{id}/', [BillingController::class, 'showReadBillPayConsumer']);
+    Route::resource('/billing', BillingController::class);
 
     Route::resource('/settings', SettingsController::class);
+    Route::put("settingUpdate/{id}", [SettingsController::class, 'updateSettings']);
 
     Route::resource('/user', UserController::class);
     Route::put('/userPassword/{id}', [UserController::class, 'updatePassword']);
 
-    Route::resource('/billing', BillingController::class);
     
     Route::resource('/serviceperiod', ServicePeriodController::class); 
     Route::post('addmaui',[ConsumersController::class, 'add']);

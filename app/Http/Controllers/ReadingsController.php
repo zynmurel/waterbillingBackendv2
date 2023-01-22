@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBillingReadingRequest;
 use App\Http\Requests\StoreReadingRequest;
 use App\Models\BarangayPurok;
 use App\Models\Billing;
@@ -9,6 +10,7 @@ use App\Models\Consumer;
 use App\Models\Payment;
 use App\Models\Reading;
 use App\Models\ServicePeriod;
+use App\Models\Settings;
 use Carbon\Carbon;
 use Dotenv\Store\File\Reader;
 use Illuminate\Http\Request;
@@ -226,6 +228,65 @@ class ReadingsController extends Controller
             "status"=>true,
             "message"=> "Collection Report is found",
             "consumerReport"=>$consumerReport
+        ],200);
+    }
+    public function toReadConsumers(){
+        $consumers = Consumer::all();
+        $dateAfter = Carbon::now()->subMonth()->format('Y')."-".Carbon::now()->subMonth()->shortEnglishMonth;
+        $service_period_id = ServicePeriod::where("service_period_id", "2")->pluck("service_period_id")[0];
+        $service_period = ServicePeriod::where("service_period_id", "2")->pluck("service_period")[0];
+        foreach($consumers as $consumer){
+            $consumer["service_period_id"] = null;
+            $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 10, '0', STR_PAD_LEFT);
+            $consumer["barangay"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("barangay")[0];
+            $consumer["purok"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("purok")[0];
+            $reading  = Reading::where("consumer_id", $consumer["consumer_id"])->latest()->first();
+            $consumer["service_period_id_to_be"] = $service_period_id;
+            $consumer["service_period"] = $service_period;
+            if($reading){
+                $consumer["service_period_id"] = $reading["service_period_id"];
+            }
+        }
+        return json_decode($consumers);
+    }
+    public function findBillReading($id){
+        $billread["bill"] = Billing::where("consumer_id", $id)->latest()->first();
+        $billread["read"] = Reading::where("consumer_id", $id)->latest()->first();
+        $billread["due_date"] = Settings::where("setting_key", 1)->pluck("setting_value")[0];
+        $billread["penalty"] = Settings::where("setting_key", 2)->pluck("setting_value")[0];
+        $json_setting = Settings::where("setting_key", 3)->pluck("setting_value")[0];
+        $billread["cubic_rates"] = json_decode($json_setting);
+        return response()->json($billread);
+    }
+
+    public function storeBillReading(StoreBillingReadingRequest $request)
+    {
+        $reading = [
+        "reader_id" => $request->reader_id,
+        "consumer_id" =>$request->consumer_id,
+        "service_period_id" =>$request->service_period_id,
+        "previous_reading" =>$request->previous_reading,
+        "present_reading" =>$request->present_reading,
+        "reading_date" => $request->reading_date
+    ];
+        $billing =[
+            "consumer_id" =>$request->consumer_id,
+            "service_period_id" =>$request->service_period_id,
+            "due_date"=>$request->due_date,
+            "previous_bill"=>$request->previous_bill,
+            "previous_payment"=>$request->previous_payment,
+            "penalty"=>$request->penalty,
+            "present_bill"=>$request->present_bill
+        ];
+        $createdReading = Reading::create($reading);
+        $createdBilling = Billing::create($billing);
+
+        return response()->json([
+            "status"=>true,
+            "message"=> "stored succesfully",
+            "reading"=>$createdReading,
+            "billing"=>$createdBilling,
+            "reading"=>$createdReading
         ],200);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCubicRateUpdateRequest;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,18 @@ class SettingsController extends Controller
             "message"=> "Collection Report is found",
             "collectionReport"=>$settings
         ],200);
+    }
+
+    public function updateSettings(StoreCubicRateUpdateRequest $request, $id)
+    {
+        $setting = [
+            "setting_value" => $request->setting_value
+        ];
+        Settings::where('setting_key', $id) ->update($setting);
+        return response()->json([
+            "data"=>"Settings updated!",
+            "consumer"=>$setting
+        ]);
     }
 
     /**

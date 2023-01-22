@@ -38,9 +38,10 @@ class Consumer extends Model
 
     static function getAllConsumers()
     {
-        $results = DB::table('consumers')
+        $results = DB::table('consumers')->where("consumer_id","<>",2)
             ->get();
         foreach ($results as $key => $row) {
+            $results[$key]->user_type = User::where("user_id", $results[$key]->user_id)->pluck("user_type")[0];
             $results[$key]->consumer_id = str_pad($row->consumer_id, 10, '0', STR_PAD_LEFT);
             $bgry_prk = BarangayPurok::getBrgyPrkData($row->brgyprk_id);
             $results[$key]->barangay = $bgry_prk['barangay'];
