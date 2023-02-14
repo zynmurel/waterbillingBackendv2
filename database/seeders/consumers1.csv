@@ -1,0 +1,237 @@
+email,user_type,password,first_name,middle_name,last_name,gender,birthday,phone,civil_status,name_of_spouse,purok,barangay,household_no,first_reading,usage_type,serial_no,brand,status,delinquent,registered_at
+Andrei.Chatto@gmail.com,Reader,AndreiChatto123,Andrei,Ugpo,Chatto,Male,2001-01-14,9486207359,Widowed,,1,Boctol,12,0,residential,3014,Sunrise,Connected,FALSE,2019-02-28
+Eric.Maglajos@gmail.com,Consumer,EricMaglajos123,Eric,Lacea,Maglajos,Male,1979-08-09,9456712321,Married,Toni Puller,1,Boctol,21,0,residential,2870,Watermark,Connected,FALSE,2019-09-04
+Sean Maruel.Comingues@gmail.com,Admin,Sean MaruelComingues123,Sean Maruel,Anub,Comingues,Male,1977-02-15,9125679089,Married,Kristine Carog,1,Boctol,15,0,residential,4222,Watermark,Connected,FALSE,2019-09-05
+Jeramelle .Tatad@gmail.com,Consumer,Jeramelle Tatad123,Jeramelle ,Anunciado,Tatad,Male,1977-02-16,9645231321,Single,,1,Boctol,21,0,residential,3724,Sunrise,Connected,FALSE,2019-09-06
+Paul.Baquero@gmail.com,Consumer,PaulBaquero123,Paul,Orig,Baquero,Male,1977-02-17,9384762497,Single,,1,Boctol,18,0,residential,4798,Sunrise,Connected,TRUE,2019-09-07
+Justin.Corpuz@gmail.com,Consumer,JustinCorpuz123,Justin,Bieber,Corpuz,Male,2001-01-14,9518969056,Married,Marjanne Aninao,2,Boctol,19,0,residential,3409,Watermark,Connected,TRUE,2019-09-08
+Mary.Chatto@gmail.com,Consumer,MaryChatto123,Mary,Wakanda,Chatto,Female,2001-01-15,9877872231,Married,FJ,2,Boctol,15,0,residential,2316,Sunrise,Disconnected,FALSE,2019-09-09
+Myla.Torreon@gmail.com,Cashier,MylaTorreon123,Myla,Lansang,Torreon,Female,2001-01-16,9556232121,Single,,2,Boctol,12,0,residential,1511,Watermark,Connected,FALSE,2019-09-10
+Janie.Acain@gmail.com,Reader,JanieAcain123,Janie,Yap,Acain,Male,2001-01-17,9874423211,Single,,2,Boctol,11,0,commercial,3103,Watermark,Connected,TRUE,2019-09-11
+Amelia.Bacani @gmail.com,Consumer,AmeliaBacani 123,Amelia,Abacan,Bacani ,Female,2001-01-18,9486207359,Single,,2,Boctol,22,0,residential,5697,Sunrise,Connected,FALSE,2018-08-18
+Ava.Bacod@gmail.com,Reader,AvaBacod123,Ava,Abad ,Bacod,Female,2001-01-19,9456712321,Single,,3,Boctol,18,0,residential,2657,Watermark,Connected,FALSE,2018-08-19
+Alexander.Bacon@gmail.com,Consumer,AlexanderBacon123,Alexander,Abadiano,Bacon,Male,2001-01-20,9125679089,Single,,3,Boctol,28,0,residential,2743,Watermark,Connected,FALSE,2018-08-20
+Avery.Bacolod@gmail.com,Consumer,AveryBacolod123,Avery,Abagat,Bacolod,Female,2001-01-21,9645231321,Single,,3,Boctol,15,0,residential,5345,Sunrise,Connected,FALSE,2018-08-21
+Asher.Badel@gmail.com,Consumer,AsherBadel123,Asher,Abajenza,Badel,Female,2001-01-22,9384762497,Single,,3,Boctol,12,0,commercial,3520,Sunrise,Connected,TRUE,2018-08-22
+Aiden.Badong@gmail.com,Consumer,AidenBadong123,Aiden,Aballa,Badong,Male,2001-01-23,9518969056,Single,,3,Boctol,23,0,commercial,5237,Watermark,Connected,TRUE,2018-08-23
+Abigail.Baga@gmail.com,Consumer,AbigailBaga123,Abigail,Ábalos ,Baga,Male,2001-01-24,9877872231,Single,,4,Boctol,19,0,residential,3463,Sunrise,Disconnected,FALSE,2018-08-24
+Anthony.Bagatnan@gmail.com,Consumer,AnthonyBagatnan123,Anthony,Abando,Bagatnan,Male,2001-01-25,9556232121,Single,,4,Boctol,19,0,residential,4862,Watermark,Connected,FALSE,2018-08-25
+Aria.Bagatsing @gmail.com,Consumer,AriaBagatsing 123,Aria,Abanto,Bagatsing ,Female,1979-08-09,9874423211,Single,,4,Boctol,17,0,residential,4415,Watermark,Connected,TRUE,2020-06-02
+Andrew.Bagayna@gmail.com,Consumer,AndrewBagayna123,Andrew,Abangad,Bagayna,Male,1979-08-10,9384762497,Single,,4,Boctol,16,0,residential,3895,Sunrise,Disconnected,FALSE,2020-06-03
+Aurora.Bagcal@gmail.com,Consumer,AuroraBagcal123,Aurora,Abangan,Bagcal,Female,1979-08-11,9518969056,Single,,4,Boctol,18,0,residential,5571,Watermark,Connected,FALSE,2020-06-04
+Angel.Bagon@gmail.com,Consumer,AngelBagon123,Angel,Abastar,Bagon,Male,1979-08-12,9877872231,Single,,5,Boctol,14,0,residential,4227,Watermark,Connected,FALSE,2020-06-05
+Adrian.Bagsic@gmail.com,Consumer,AdrianBagsic123,Adrian,Abastillas,Bagsic,Male,1979-08-13,9556232121,Single,,5,Boctol,17,0,residential,1463,Sunrise,Connected,FALSE,2020-06-06
+Aaron.Balagtas @gmail.com,Consumer,AaronBalagtas 123,Aaron,Abdon,Balagtas ,Male,1979-08-14,9874423211,Single,,5,Boctol,28,0,residential,1417,Watermark,Connected,FALSE,2020-06-07
+Addison.Balajadia@gmail.com,Consumer,AddisonBalajadia123,Addison,Abe ,Balajadia,Male,1979-08-15,9486207359,Married,Christopher Columbus,5,Boctol,11,0,residential,1440,Watermark,Disconnected,FALSE,2020-06-08
+Axel.Balais@gmail.com,Consumer,AxelBalais123,Axel,Abel,Balais,Male,1979-08-16,9456712321,Married,Henry Hudson,5,Boctol,29,0,residential,2339,Sunrise,Connected,FALSE,2020-06-09
+Austin.Balang@gmail.com,Consumer,AustinBalang123,Austin,Abelardo,Balang,Male,1994-01-28,9125679089,Married,Amerigo Vespucci,6,Boctol,25,0,residential,3454,Sunrise,Connected,FALSE,2020-06-10
+Audrey.Balangel@gmail.com,Consumer,AudreyBalangel123,Audrey,Abella ,Balangel,Female,1974-01-03,9645231321,Married,John Smith,6,Boctol,21,0,residential,5612,Watermark,Disconnected,FALSE,2020-06-11
+Aubrey.Balatero@gmail.com,Consumer,AubreyBalatero123,Aubrey,Abellana,Balatero,Female,1974-01-04,9486207359,Married,Giovanni da Verrazzano,6,Boctol,22,0,residential,5044,Watermark,Connected,FALSE,2020-06-12
+Adam.Balbaira@gmail.com,Consumer,AdamBalbaira123,Adam,Abellanosa,Balbaira,Male,1974-01-05,9456712321,Married,John Muir,6,Boctol,25,0,residential,5629,Sunrise,Connected,FALSE,2020-06-13
+Bea.Balbas@gmail.com,Consumer,BeaBalbas123,Bea,Abellano,Balbas,Female,1974-01-06,9125679089,Married,Meriwether Lewis ,6,Boctol,25,0,commercial,1292,Sunrise,Disconnected,FALSE,2020-06-14
+Catriona.Balbin@gmail.com,Consumer,CatrionaBalbin123,Catriona,Abellera,Balbin,Female,1974-01-07,9645231321,Married,Sacagawea,1,Baucan Norte,11,0,commercial,4089,Watermark,Disconnected,FALSE,2020-06-15
+Charice.Balbutin@gmail.com,Consumer,ChariceBalbutin123,Charice,Abello,Balbutin,Female,1974-01-08,9384762497,Married,Kit Carson,1,Baucan Norte,14,0,commercial,5146,Sunrise,Disconnected,FALSE,2018-10-12
+Corazon.Balcita@gmail.com,Consumer,CorazonBalcita123,Corazon,Abellón,Balcita,Female,1974-01-09,9518969056,Married,Neil Armstrong,1,Baucan Norte,20,0,commercial,3652,Watermark,Connected,FALSE,2018-10-13
+Gladys.Abad@gmail.com,Consumer,GladysAbad123,Gladys,Abilar,Abad,Female,1974-01-10,9877872231,Married,John Wesley Powell,1,Baucan Norte,12,0,commercial,4449,Watermark,Connected,FALSE,2018-10-14
+Hilda.Acuña@gmail.com,Consumer,HildaAcuña123,Hilda,Abilon,Acuña,Female,1974-01-11,9556232121,Married,William Clark,1,Baucan Norte,12,0,commercial,3951,Sunrise,Connected,TRUE,2018-10-15
+Julia.Adorna@gmail.com,Consumer,JuliaAdorna123,Julia,Abina,Adorna,Female,1997-07-19,9874423211,Married,Martin Luther King Jr.,2,Baucan Norte,18,0,residential,1267,Watermark,Connected,TRUE,2018-10-16
+Kathryn.Adriano@gmail.com,Consumer,KathrynAdriano123,Kathryn,Abion,Adriano,Female,1997-07-20,9486207359,Married,Robert E. Lee,2,Baucan Norte,27,0,residential,2677,Watermark,Connected,FALSE,2018-10-17
+Kristine.Advíncula@gmail.com,Consumer,KristineAdvíncula123,Kristine,Abison,Advíncula,Female,1997-07-21,9456712321,Widowed,,2,Baucan Norte,29,0,commercial,1798,Sunrise,Connected,FALSE,2018-10-18
+Lea.Afable@gmail.com,Consumer,LeaAfable123,Lea,Ablog,Afable,Female,1997-07-22,9125679089,Widowed,,2,Baucan Norte,22,0,commercial,1893,Watermark,Disconnected,TRUE,2018-10-19
+Liza.Agres@gmail.com,Consumer,LizaAgres123,Liza,Abril,Agres,Female,1997-07-23,9645231321,Widowed,,2,Baucan Norte,10,0,commercial,5233,Watermark,Connected,FALSE,2018-10-20
+Maine.Aguado@gmail.com,Consumer,MaineAguado123,Maine,Abobo,Aguado,Female,1997-07-24,9384762497,Widowed,,3,Baucan Norte,20,0,commercial,2348,Sunrise,Connected,FALSE,2018-10-21
+Maja.Águila@gmail.com,Consumer,MajaÁguila123,Maja,Echiverri ,Águila,Female,1997-07-25,9518969056,Widowed,,3,Baucan Norte,19,0,residential,1148,Sunrise,Connected,FALSE,2018-10-22
+Marian.Aguilar@gmail.com,Consumer,MarianAguilar123,Marian,Edillo,Aguilar,Female,1968-01-01,9877872231,Widowed,,3,Baucan Norte,10,0,residential,5271,Watermark,Connected,FALSE,2018-10-23
+Maricel.Aguja@gmail.com,Consumer,MaricelAguja123,Maricel,Edralín ,Aguja,Female,1968-01-02,9556232121,Widowed,,3,Baucan Norte,25,0,commercial,5306,Sunrise,Connected,TRUE,2018-03-14
+Mariel.Agustín@gmail.com,Consumer,MarielAgustín123,Mariel,Ednaco,Agustín,Female,1968-01-03,9874423211,Widowed,,3,Baucan Norte,21,0,residential,5403,Watermark,Connected,TRUE,2018-03-15
+Nadine.Alcántara@gmail.com,Consumer,NadineAlcántara123,Nadine,Eje,Alcántara,Female,1968-01-04,9384762497,Widowed,,4,Baucan Norte,13,0,residential,1380,Watermark,Connected,FALSE,2018-03-16
+Nora.Alejandro@gmail.com,Consumer,NoraAlejandro123,Nora,Elad,Alejandro,Male,1968-01-05,9518969056,Widowed,,4,Baucan Norte,19,0,residential,5547,Sunrise,Connected,FALSE,2018-03-17
+Sandara.Alejo@gmail.com,Consumer,SandaraAlejo123,Sandara,Elardo,Alejo,Male,1968-01-06,9877872231,Widowed,,4,Baucan Norte,13,0,residential,1065,Sunrise,Connected,TRUE,2018-03-18
+Vanessa.Alemán@gmail.com,Consumer,VanessaAlemán123,Vanessa,Elizaga,Alemán,Male,1968-01-07,9556232121,Widowed,,4,Baucan Norte,30,0,residential,3483,Watermark,Connected,FALSE,2018-03-19
+Alicia.Alfaro@gmail.com,Consumer,AliciaAlfaro123,Alicia,Elizalde,Alfaro,Male,1968-01-08,9874423211,Widowed,,4,Baucan Norte,24,0,residential,5166,Watermark,Connected,FALSE,2018-03-20
+Barbara.Almario@gmail.com,Consumer,BarbaraAlmario123,Barbara,Elorde,Almario,Female,1968-01-09,9486207359,Widowed,,5,Baucan Norte,23,0,residential,2134,Sunrise,Connected,FALSE,2018-03-21
+Bernila.Almazán@gmail.com,Consumer,BernilaAlmazán123,Bernila,Elorriaga,Almazán,Female,1968-01-10,9456712321,Widowed,,5,Baucan Norte,10,0,commercial,5461,Sunrise,Connected,FALSE,2018-03-22
+Bettina.Almonte@gmail.com,Consumer,BettinaAlmonte123,Bettina,Embang,Almonte,Male,1968-01-11,9125679089,Widowed,,5,Baucan Norte,20,0,commercial,3483,Watermark,Connected,FALSE,2018-03-23
+Carmelita.Alonzo@gmail.com,Consumer,CarmelitaAlonzo123,Carmelita,Emia,Alonzo,Female,1968-01-12,9645231321,Single,,5,Baucan Norte,26,0,commercial,3873,Sunrise,Disconnected,FALSE,2018-03-24
+Caterina.Alvarado@gmail.com,Consumer,CaterinaAlvarado123,Caterina,Empig,Alvarado,Female,1968-01-13,9556232121,Single,,5,Baucan Norte,24,0,commercial,2085,Watermark,Connected,FALSE,2018-03-25
+Cecilia.Álvarez@gmail.com,Consumer,CeciliaÁlvarez123,Cecilia,Enanoria,Álvarez,Male,1995-06-15,9874423211,Single,,6,Baucan Norte,27,0,commercial,5713,Watermark,Connected,FALSE,2018-03-26
+Cristina.Amador@gmail.com,Consumer,CristinaAmador123,Cristina,Acoba,Amador,Male,1995-06-16,9384762497,Single,,6,Baucan Norte,15,0,commercial,3585,Sunrise,Connected,FALSE,2022-01-14
+Diana.Amante@gmail.com,Consumer,DianaAmante123,Diana,Andrea,Amante,Female,1995-06-17,9518969056,Single,,6,Baucan Norte,28,0,residential,4384,Watermark,Connected,FALSE,2022-01-15
+Divina.Andrés@gmail.com,Consumer,DivinaAndrés123,Divina,Ang,Andrés,Female,1995-06-18,9877872231,Single,,6,Baucan Norte,22,0,residential,4252,Watermark,Connected,FALSE,2022-01-16
+Dolores.Ángeles@gmail.com,Consumer,DoloresÁngeles123,Dolores,Ates,Ángeles,Male,1995-06-19,9556232121,Single,,6,Baucan Norte,17,0,residential,1993,Sunrise,Connected,FALSE,2022-01-17
+Evangelina.Antonio@gmail.com,Consumer,EvangelinaAntonio123,Evangelina,Ator,Antonio,Female,1995-06-20,9874423211,Single,,1,Baucan Sur,13,0,residential,1023,Watermark,Connected,FALSE,2022-01-18
+Gloria.Anunciación@gmail.com,Consumer,GloriaAnunciación123,Gloria,Ayson,Anunciación,Female,1995-06-21,9486207359,Single,,1,Baucan Sur,15,0,residential,5289,Watermark,Connected,FALSE,2022-01-19
+Imelda.Apostol@gmail.com,Consumer,ImeldaApostol123,Imelda,Bacani,Apostol,Male,1995-06-22,9456712321,Single,,1,Baucan Sur,14,0,residential,5506,Sunrise,Connected,FALSE,2022-01-20
+Maria.Aquino@gmail.com,Consumer,MariaAquino123,Maria,Cada,Aquino,Male,1995-06-23,9125679089,Single,,1,Baucan Sur,29,0,residential,2201,Watermark,Connected,FALSE,2022-01-21
+Maricar.Arbolado@gmail.com,Consumer,MaricarArbolado123,Maricar,Cahoy,Arbolado,Female,1995-06-24,9645231321,Single,,1,Baucan Sur,22,0,residential,4910,Watermark,Connected,FALSE,2022-01-22
+Maricris.Arcangel@gmail.com,Consumer,MaricrisArcangel123,Maricris,Canoy,Arcangel,Female,1995-06-25,9486207359,Single,,2,Baucan Sur,24,0,residential,2068,Sunrise,Connected,FALSE,2022-01-23
+Patricia.Arce@gmail.com,Consumer,PatriciaArce123,Patricia,Cavan,Arce,Male,1995-06-26,9456712321,Single,,2,Baucan Sur,28,0,residential,1369,Sunrise,Connected,TRUE,2022-01-24
+Teresa.Arcilla@gmail.com,Consumer,TeresaArcilla123,Teresa,Dizon,Arcilla,Female,1995-06-27,9125679089,Single,,2,Baucan Sur,13,0,residential,2442,Watermark,Connected,TRUE,2019-07-14
+Victoria.Arcino@gmail.com,Consumer,VictoriaArcino123,Victoria,Dugay,Arcino,Female,1993-03-11,9645231321,Single,,2,Baucan Sur,10,0,residential,1945,Watermark,Disconnected,FALSE,2019-07-15
+Ai-Ai.Arellano@gmail.com,Consumer,Ai-AiArellano123,Ai-Ai,Dulay,Arellano,Male,1993-03-12,9384762497,Single,,2,Baucan Sur,14,0,residential,2652,Sunrise,Connected,FALSE,2019-07-16
+Aiko.Arenas@gmail.com,Consumer,AikoArenas123,Aiko,Dumlao,Arenas,Male,1993-03-13,9518969056,Single,,3,Baucan Sur,20,0,commercial,3938,Sunrise,Connected,TRUE,2019-07-17
+Aira.Arevalo@gmail.com,Consumer,AiraArevalo123,Aira,Duso,Arevalo,Male,1993-03-14,9877872231,Single,,3,Baucan Sur,17,0,commercial,1242,Watermark,Connected,FALSE,2019-07-18
+Alma.Arroyo@gmail.com,Consumer,AlmaArroyo123,Alma,Dy,Arroyo,Male,1993-03-15,9556232121,Single,,3,Baucan Sur,29,0,commercial,5638,Sunrise,Connected,FALSE,2019-07-19
+Alodia.Asentista@gmail.com,Consumer,AlodiaAsentista123,Alodia,Galang,Asentista,Male,1993-03-16,9874423211,Single,,3,Baucan Sur,19,0,commercial,1031,Watermark,Connected,FALSE,2019-07-20
+Amy.Asis@gmail.com,Consumer,AmyAsis123,Amy,Go,Asis,Male,1993-03-17,9518969056,Single,,3,Baucan Sur,22,0,commercial,1292,Watermark,Connected,FALSE,2019-07-21
+Ana.Astorga@gmail.com,Consumer,AnaAstorga123,Ana,Ilagan,Astorga,Male,1993-03-18,9877872231,Single,,4,Baucan Sur,17,0,commercial,5913,Sunrise,Connected,TRUE,2019-07-22
+Andi.Asunción@gmail.com,Consumer,AndiAsunción123,Andi,Koh,Asunción,Female,1993-03-19,9556232121,Single,,4,Baucan Sur,23,0,residential,5738,Watermark,Connected,TRUE,2019-07-23
+Anna.Atienza@gmail.com,Consumer,AnnaAtienza123,Anna,Kuan,Atienza,Female,1993-03-20,9874423211,Single,,4,Baucan Sur,10,0,residential,2364,Watermark,Connected,FALSE,2019-07-24
+Barbie.Austria@gmail.com,Consumer,BarbieAustria123,Barbie,Lacson,Austria,Male,1993-03-21,9384762497,Single,,4,Baucan Sur,28,0,commercial,4665,Sunrise,Connected,FALSE,2019-05-12
+Bella.Avendaño@gmail.com,Consumer,BellaAvendaño123,Bella,Lagman,Avendaño,Male,1993-03-22,9518969056,Single,,4,Baucan Sur,18,0,commercial,1974,Watermark,Connected,FALSE,2019-05-13
+Bianca.Ávila@gmail.com,Consumer,BiancaÁvila123,Bianca,Lim,Ávila,Male,1993-03-23,9877872231,Single,,5,Baucan Sur,14,0,commercial,3948,Sunrise,Connected,FALSE,2019-05-14
+Blessica.Ballesteros@gmail.com,Consumer,BlessicaBallesteros123,Blessica,Macaraeg,Ballesteros,Male,1993-03-24,9556232121,Single,,5,Baucan Sur,18,0,commercial,3389,Watermark,Connected,FALSE,2019-05-15
+Candy.Baltazar@gmail.com,Consumer,CandyBaltazar123,Candy,Magat,Baltazar,Male,1993-03-25,9874423211,Single,,5,Baucan Sur,11,0,residential,2560,Sunrise,Connected,FALSE,2019-05-16
+Carla.Barrientos@gmail.com,Consumer,CarlaBarrientos123,Carla,Mallari,Barrientos,Male,1993-03-26,9486207359,Single,,5,Baucan Sur,13,0,residential,5952,Watermark,Disconnected,FALSE,2019-05-17
+Charito.Barrios@gmail.com,Consumer,CharitoBarrios123,Charito,Manalo,Barrios,Male,1967-06-12,9456712321,Single,,5,Baucan Sur,29,0,commercial,4626,Watermark,Connected,FALSE,2019-05-18
+Cherry.Barrozo@gmail.com,Consumer,CherryBarrozo123,Cherry,Manansala,Barrozo,Female,1967-06-13,9125679089,Married,Nina Ellaine Cabrera,6,Baucan Sur,22,0,residential,1813,Sunrise,Connected,FALSE,2019-05-19
+Cheska.Bartolome@gmail.com,Consumer,CheskaBartolome123,Cheska,Marasigan,Bartolome,Female,1967-06-14,9645231321,Married,Pia Wurtzbach,6,Baucan Sur,14,0,residential,4608,Watermark,Connected,FALSE,2019-05-20
+Chynna.Basco@gmail.com,Consumer,ChynnaBasco123,Chynna,Marchan,Basco,Male,1967-06-15,9556232121,Married,Nadine Lustre,6,Baucan Sur,22,0,residential,3454,Watermark,Connected,FALSE,2019-05-21
+Claudia.Bautista@gmail.com,Consumer,ClaudiaBautista123,Claudia,Ngu,Bautista,Female,1967-06-16,9874423211,Married,Angel Locsin,6,Baucan Sur,17,0,residential,5098,Sunrise,Connected,FALSE,2019-05-22
+Coleen.Baylón@gmail.com,Consumer,ColeenBaylón123,Coleen,Ong,Baylón,Female,1967-06-17,9384762497,Married,Bea Gomez,6,Baucan Sur,27,0,residential,2738,Watermark,Connected,FALSE,2019-05-23
+Daisy.Beato@gmail.com,Consumer,DaisyBeato123,Daisy,Pado,Beato,Male,1967-06-18,9518969056,Married,Liza Soberano,1,Boyog Norte,16,0,residential,2453,Watermark,Connected,FALSE,2019-05-24
+Denise.Belarmino@gmail.com,Consumer,DeniseBelarmino123,Denise,Panganiban,Belarmino,Male,1967-06-19,9877872231,Married,Vice Ganda,1,Boyog Norte,30,0,commercial,2899,Sunrise,Connected,FALSE,2019-05-25
+Dianne.Belleza@gmail.com,Consumer,DianneBelleza123,Dianne,Pangelinan,Belleza,Female,1967-06-20,9556232121,Married,Ayn Bernos,1,Boyog Norte,30,0,commercial,4428,Watermark,Connected,FALSE,2019-05-26
+Dimples.Bello@gmail.com,Consumer,DimplesBello123,Dimples,Pangilinan,Bello,Female,1967-06-21,9874423211,Married,Catriona Gray,1,Boyog Norte,14,0,residential,4136,Watermark,Connected,FALSE,2018-04-08
+Elena.Beltrán@gmail.com,Consumer,ElenaBeltrán123,Elena,Sanson,Beltrán,Male,1987-07-06,9874423211,Married,Mela Habijan,1,Boyog Norte,20,0,residential,5114,Sunrise,Connected,FALSE,2018-04-09
+Elise.Benedicto@gmail.com,Consumer,EliseBenedicto123,Elise,Sao,Benedicto,Female,1987-07-07,9486207359,Married,Francine Diaz,2,Boyog Norte,14,0,commercial,5899,Sunrise,Connected,TRUE,2018-04-10
+Elizabeth.Benítez@gmail.com,Consumer,ElizabethBenítez123,Elizabeth,Seno,Benítez,Female,1987-07-08,9456712321,Married,Niana Guerrero,2,Boyog Norte,24,0,residential,1949,Watermark,Connected,TRUE,2018-04-11
+Emma.Bernal@gmail.com,Consumer,EmmaBernal123,Emma,Sian,Bernal,Male,1987-07-09,9125679089,Married,James Reid,2,Boyog Norte,24,0,residential,1818,Watermark,Connected,FALSE,2018-04-12
+Empress.Reyes@gmail.com,Consumer,EmpressReyes123,Empress,Singson,Reyes,Male,1987-07-10,9645231321,Married,Moira Dela Torre,2,Boyog Norte,30,0,residential,2333,Sunrise,Disconnected,FALSE,2018-04-13
+Eula.Rivera@gmail.com,Consumer,EulaRivera123,Eula,Sison,Rivera,Female,1987-07-11,9486207359,Married,Andrea Brillantes,2,Boyog Norte,26,0,residential,2847,Sunrise,Connected,TRUE,2018-04-14
+Eva.Robles@gmail.com,Consumer,EvaRobles123,Eva,Tan,Robles,Female,1987-07-12,9456712321,Married,Lovi Poe,3,Boyog Norte,26,0,residential,2653,Watermark,Connected,FALSE,2018-04-15
+Francine.Rodríguez@gmail.com,Consumer,FrancineRodríguez123,Francine,Te,Rodríguez,Male,1987-07-13,9125679089,Married,Belle Mariano,3,Boyog Norte,29,0,commercial,2360,Sunrise,Connected,FALSE,2018-04-16
+Gabby.Rojas@gmail.com,Consumer,GabbyRojas123,Gabby,Teh,Rojas,Female,1987-07-14,9645231321,Married,Charisma Lico,3,Boyog Norte,17,0,commercial,1147,Sunrise,Connected,FALSE,2018-04-17
+Gina.Roldán@gmail.com,Consumer,GinaRoldán123,Gina,Tiu,Roldán,Female,1987-07-15,9384762497,Married,Erwan Heussaff,3,Boyog Norte,15,0,commercial,1953,Watermark,Connected,FALSE,2018-04-18
+Gladys.Romero@gmail.com,Consumer,GladysRomero123,Gladys,Tuazon,Romero,Male,1987-07-16,9518969056,Married,Alodia Gosiengfiao,3,Boyog Norte,10,0,commercial,5570,Sunrise,Connected,TRUE,2018-04-19
+Gloria.Ronquillo@gmail.com,Consumer,GloriaRonquillo123,Gloria,Ty,Ronquillo,Male,1987-07-17,9877872231,Married,Jeremy Jauncey,4,Boyog Norte,21,0,commercial,4974,Watermark,Connected,TRUE,2018-04-20
+Gretchen.Roque@gmail.com,Consumer,GretchenRoque123,Gretchen,de Jesús,Roque,Male,1987-07-18,9556232121,Married,Ivana Alawi,4,Boyog Norte,27,0,residential,3525,Watermark,Connected,FALSE,2018-04-21
+Gwen.Rosal@gmail.com,Consumer,GwenRosal123,Gwen,de la Cruz,Rosal,Male,1986-01-17,9874423211,Married,Gideon Hermosa,4,Boyog Norte,30,0,residential,1578,Sunrise,Connected,FALSE,2018-04-22
+Harlene.Rosales@gmail.com,Consumer,HarleneRosales123,Harlene,de León,Rosales,Male,1986-01-18,9518969056,Married,Sassa Gurl,4,Boyog Norte,17,0,residential,3600,Watermark,Connected,FALSE,2018-04-23
+Hazel.Rosario@gmail.com,Consumer,HazelRosario123,Hazel,de Luna,Rosario,Male,1986-01-19,9877872231,Married,Donny Pangilinan,4,Boyog Norte,12,0,residential,5332,Watermark,Connected,FALSE,2018-04-24
+Heaven.Rosas@gmail.com,Consumer,HeavenRosas123,Heaven,de Ocampo,Rosas,Male,1986-01-20,9556232121,Married,Bea Alonzo,5,Boyog Norte,15,0,residential,1233,Sunrise,Connected,FALSE,2018-04-25
+Helga.Roxas@gmail.com,Consumer,HelgaRoxas123,Helga,de Vera,Roxas,Female,1986-01-21,9874423211,Married,Kryz Uy,5,Boyog Norte,16,0,residential,4457,Watermark,Connected,FALSE,2018-04-26
+Imelda.Ruiz@gmail.com,Consumer,ImeldaRuiz123,Imelda,de Villa,Ruiz,Female,1986-01-22,9384762497,Married,Marian Rivera,5,Boyog Norte,29,0,residential,3858,Watermark,Connected,FALSE,2021-03-14
+Ina.Salas@gmail.com,Consumer,InaSalas123,Ina,del Mundo,Salas,Male,1986-01-23,9518969056,Single,,5,Boyog Norte,22,0,residential,5993,Sunrise,Disconnected,FALSE,2021-03-15
+Isabel.Salazar@gmail.com,Consumer,IsabelSalazar123,Isabel,del Pilar,Salazar,Male,1986-01-24,9877872231,Single,,5,Boyog Norte,13,0,residential,3222,Watermark,Connected,FALSE,2021-03-16
+Jackie.Salcedo@gmail.com,Consumer,JackieSalcedo123,Jackie,del Rosario,Salcedo,Male,1986-01-25,9556232121,Single,,6,Boyog Norte,26,0,residential,3110,Watermark,Connected,FALSE,2021-03-17
+Jade.Salinas@gmail.com,Consumer,JadeSalinas123,Jade,dela Cruz,Salinas,Male,1986-01-26,9874423211,Single,,6,Boyog Norte,19,0,residential,1523,Sunrise,Connected,FALSE,2021-03-18
+Janelle.Salvador@gmail.com,Consumer,JanelleSalvador123,Janelle,dela Cuesta,Salvador,Male,1965-08-13,9486207359,Single,,6,Boyog Norte,19,0,residential,4153,Sunrise,Connected,FALSE,2021-03-19
+Janine.San Diego@gmail.com,Consumer,JanineSan Diego123,Janine,dela Paz,San Diego,Male,1965-08-14,9456712321,Single,,6,Boyog Norte,15,0,residential,5749,Watermark,Connected,FALSE,2021-03-20
+Jennylyn.San Jose@gmail.com,Consumer,JennylynSan Jose123,Jennylyn,dela Peña,San Jose,Male,1965-08-15,9125679089,Single,,6,Boyog Norte,21,0,commercial,3492,Watermark,Connected,FALSE,2021-03-21
+Joyce.San Juan@gmail.com,Consumer,JoyceSan Juan123,Joyce,dela Rosa,San Juan,Female,1965-08-16,9645231321,Single,,1,Boyog Proper,23,0,residential,2305,Sunrise,Connected,FALSE,2021-03-22
+Karen.San Pedro@gmail.com,Consumer,KarenSan Pedro123,Karen,dela Torre,San Pedro,Female,1965-08-17,9556232121,Single,,1,Boyog Proper,13,0,residential,3113,Sunrise,Connected,FALSE,2021-03-23
+Kim.Sánchez@gmail.com,Consumer,KimSánchez123,Kim,Delgado,Sánchez,Male,1965-08-18,9874423211,Single,,1,Boyog Proper,16,0,residential,1122,Watermark,Connected,FALSE,2021-03-24
+Kristel.Santa Ana@gmail.com,Consumer,KristelSanta Ana123,Kristel,delos Reyes,Santa Ana,Female,1986-02-02,9384762497,Single,,1,Boyog Proper,25,0,residential,3741,Sunrise,Connected,FALSE,2021-03-25
+Kylie.Santa Maria@gmail.com,Consumer,KylieSanta Maria123,Kylie,delos Santos,Santa Maria,Female,1986-02-03,9518969056,Single,,1,Boyog Proper,14,0,residential,4124,Watermark,Disconnected,TRUE,2018-06-06
+Lani.Santiago@gmail.com,Consumer,LaniSantiago123,Lani,Diamante,Santiago,Male,1995-05-23,9877872231,Single,,2,Boyog Proper,20,0,residential,4042,Sunrise,Disconnected,TRUE,2018-06-07
+Lexi.Santillán@gmail.com,Consumer,LexiSantillán123,Lexi,Díaz,Santillán,Male,1995-05-24,9556232121,Single,,2,Boyog Proper,25,0,commercial,2414,Sunrise,Disconnected,FALSE,2018-06-08
+Lilia.Santos@gmail.com,Consumer,LiliaSantos123,Lilia,Dionisio,Santos,Female,1995-05-25,9874423211,Married,Miss Nate Javier,2,Boyog Proper,18,0,commercial,1697,Watermark,Connected,FALSE,2018-06-09
+Liza.Sarmiento@gmail.com,Consumer,LizaSarmiento123,Liza,Domingo,Sarmiento,Female,1995-05-26,9556232121,Married,Marj Maroket,2,Boyog Proper,24,0,residential,2350,Sunrise,Connected,TRUE,2018-06-10
+Lovely.Sebastián@gmail.com,Consumer,LovelySebastián123,Lovely,Domínguez,Sebastián,Male,1995-05-27,9874423211,Married,Michelle Dy,2,Boyog Proper,29,0,residential,4294,Watermark,Connected,FALSE,2018-06-11
+Maureen.Serrano@gmail.com,Consumer,MaureenSerrano123,Maureen,Dueñas,Serrano,Female,1996-07-13,9384762497,Married,Paul Unating,3,Boyog Proper,21,0,commercial,3791,Sunrise,Connected,FALSE,2018-06-12
+Maybelyn.Sevilla@gmail.com,Consumer,MaybelynSevilla123,Maybelyn,Durán,Sevilla,Female,1996-07-14,9518969056,Married,Anthea Bueno,3,Boyog Proper,12,0,residential,3703,Watermark,Connected,FALSE,2018-06-13
+Melissa.Silvestre@gmail.com,Consumer,MelissaSilvestre123,Melissa,Empleo,Silvestre,Male,1996-07-15,9877872231,Married,Mimi Qiu Reyes,3,Boyog Proper,29,0,residential,4915,Watermark,Connected,FALSE,2018-06-14
+Michelle.Solis@gmail.com,Consumer,MichelleSolis123,Michelle,Enríquez,Solis,Male,1996-07-16,9556232121,Married,Raiza Contawi,3,Boyog Proper,26,0,residential,2835,Sunrise,Disconnected,TRUE,2018-06-15
+Mikee.Soriano@gmail.com,Consumer,MikeeSoriano123,Mikee,Escobar,Soriano,Female,1996-07-17,9874423211,Married,Paolo Ballesteros,3,Boyog Proper,11,0,residential,4066,Sunrise,Connected,TRUE,2018-06-16
+Mona.Sotto@gmail.com,Consumer,MonaSotto123,Mona,Escalona,Sotto,Female,1996-07-18,9486207359,Married,Toni Sia,4,Boyog Proper,14,0,residential,3113,Watermark,Connected,FALSE,2018-06-17
+Mutya.Suárez@gmail.com,Consumer,MutyaSuárez123,Mutya,Esguerra,Suárez,Male,1996-07-19,9456712321,Married,John Valle,4,Boyog Proper,15,0,commercial,3961,Sunrise,Disconnected,FALSE,2018-06-18
+Nadine.Tagle@gmail.com,Consumer,NadineTagle123,Nadine,Espino,Tagle,Female,1996-07-20,9125679089,Married,Heart Evangelista,4,Boyog Proper,27,0,commercial,2049,Watermark,Disconnected,FALSE,2018-06-19
+Nicole.Tamayo@gmail.com,Consumer,NicoleTamayo123,Nicole,Espinosa,Tamayo,Female,1996-07-21,9645231321,Married,Anne Curtis,4,Boyog Proper,20,0,commercial,4956,Watermark,Disconnected,FALSE,2018-06-20
+Nikki.Tenorio@gmail.com,Consumer,NikkiTenorio123,Nikki,Espíritu,Tenorio,Male,1996-07-22,9556232121,Married,Julia Barretto,4,Boyog Proper,21,0,commercial,4817,Sunrise,Connected,FALSE,2018-06-21
+Precious.Teodoro@gmail.com,Consumer,PreciousTeodoro123,Precious,Estacio,Teodoro,Female,2002-08-01,9874423211,Married,Kathryn Bernardo,5,Boyog Proper,26,0,commercial,4242,Watermark,Connected,FALSE,2021-08-02
+Queenierich.Tobias@gmail.com,Consumer,QueenierichTobias123,Queenierich,Estanislao,Tobias,Male,2002-08-02,9384762497,Married,Kylie Verzosa,5,Boyog Proper,27,0,residential,3546,Watermark,Connected,FALSE,2021-08-03
+Queen Elizabeth.Toledo@gmail.com,Consumer,Queen ElizabethToledo123,Queen Elizabeth,Esteban,Toledo,Male,2002-08-03,9518969056,Married,Camille Co,5,Boyog Proper,22,0,residential,5092,Sunrise,Connected,FALSE,2021-08-04
+Rebecca.Tolentino@gmail.com,Consumer,RebeccaTolentino123,Rebecca,Estrada,Tolentino,Female,2002-08-04,9877872231,Married,Sofia Andres,5,Boyog Proper,15,0,residential,2055,Sunrise,Connected,FALSE,2021-08-05
+Regine.Tomás@gmail.com,Consumer,RegineTomás123,Regine,Estrella,Tomás,Female,2002-08-05,9556232121,Married,Mimiyuuuh,5,Boyog Proper,15,0,residential,5349,Watermark,Connected,FALSE,2021-08-06
+Rita.Torres@gmail.com,Consumer,RitaTorres123,Rita,Eugenio,Torres,Male,2002-08-06,9874423211,Married,Sarah Lahbati,6,Boyog Proper,18,0,residential,3410,Sunrise,Disconnected,FALSE,2021-08-07
+Rosa.Traqueña@gmail.com,Consumer,RosaTraqueña123,Rosa,Eusebio,Traqueña,Female,2002-08-07,9486207359,Married,Rei Germar,6,Boyog Proper,23,0,residential,1205,Watermark,Connected,FALSE,2021-08-08
+Ruby.Trinidad@gmail.com,Consumer,RubyTrinidad123,Ruby,Evangelista,Trinidad,Female,2002-08-08,9456712321,Widowed,,6,Boyog Proper,18,0,residential,3776,Watermark,Connected,FALSE,2021-08-09
+Ruffa.Valdez@gmail.com,Consumer,RuffaValdez123,Ruffa,Fabián,Valdez,Male,2002-08-09,9125679089,Widowed,,6,Boyog Proper,20,0,residential,4997,Sunrise,Connected,FALSE,2021-08-10
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,
+"""Baucan Norte"",",,,,,,,,,,,,,,,,,,,,
+"""Baucan Sur"",",,,,,,,,,,,,,,,,,,,,
+"""Boctol"",",,,,,,,,,,,,,,,,,,,,
+"""Boyog Norte"",",,,,,,,,,,,,,,,,,,,,
+"""Boyog Proper"",",,,,,,,,,,,,,,,,,,,,
+"""Boyog Sur"",",,,,,,,,,,,,,,,,,,,,
+"""Cabad"",",,,,,,,,,,,,,,,,,,,,
+"""Candasig"",",,,,,,,,,,,,,,,,,,,,
+"""Cantalid"",",,,,,,,,,,,,,,,,,,,,
+"""Cantomimbo"",",,,,,,,,,,,,,,,,,,,,
+"""Cogon"",",,,,,,,,,,,,,,,,,,,,
+"""Datag Norte"",",,,,,,,,,,,,,,,,,,,,
+"""Datag Sur"",",,,,,,,,,,,,,,,,,,,,
+"""Del Carmen Este (Poblacion)"",",,,,,,,,,,,,,,,,,,,,
+"""Del Carmen Norte (Poblacion)"",",,,,,,,,,,,,,,,,,,,,
+"""Del Carmen Sur (Poblacion)"",",,,,,,,,,,,,,,,,,,,,
+"""Del Carmen Weste (Poblacion)"",",,,,,,,,,,,,,,,,,,,,
+"""Del Rosario"",",,,,,,,,,,,,,,,,,,,,
+"""Dorol"",",,,,,,,,,,,,,,,,,,,,
+"""Haguilanan Grande"",",,,,,,,,,,,,,,,,,,,,
+"""Hanopol Este"",",,,,,,,,,,,,,,,,,,,,
+"""Hanopol Norte"",",,,,,,,,,,,,,,,,,,,,
+"""Hanopol Weste"",",,,,,,,,,,,,,,,,,,,,
+"""Magsija"",",,,,,,,,,,,,,,,,,,,,
+"""Maslog"",",,,,,,,,,,,,,,,,,,,,
+"""Sagasa"",",,,,,,,,,,,,,,,,,,,,
+"""Sal-ing"",",,,,,,,,,,,,,,,,,,,,
+"""San Isidro"",",,,,,,,,,,,,,,,,,,,,
+"""San Roque"",",,,,,,,,,,,,,,,,,,,,
+"""Santo Niño"",",,,,,,,,,,,,,,,,,,,,
+"""Tagustusan""",,,,,,,,,,,,,,,,,,,,
