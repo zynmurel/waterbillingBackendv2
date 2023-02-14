@@ -39,6 +39,7 @@ Route::post('/register',[AuthController::class,'register']);
     Route::get('/collectionReports/{year}/{month}', [ReadingsController::class, 'collectionReports']);
     Route::get('/consumerReport', [ReadingsController::class, 'consumerReport']);
     Route::get('/toReadConsumers', [ReadingsController::class, 'toReadConsumers']);
+    Route::get('/toReadConsumers/{barangay}/{purok}', [ReadingsController::class, 'toReadConsumersByBarangay']);
     Route::get('/findBillReading/{id}', [ReadingsController::class, 'findBillReading']);
     Route::post('/storeBillReading', [ReadingsController::class, 'storeBillReading']);
 

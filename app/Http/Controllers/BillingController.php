@@ -71,7 +71,7 @@ class BillingController extends Controller
                 $bill["reading"] = Reading::where("consumer_id", $bill["consumer_id"])->where("service_period_id", $bill["service_period_id"])->get();
                 $bill["payment"] = Payment::where("service_period_id", $bill["service_period_id"])->get();
                 $bill["due_date"] = Carbon::parse($bill["due_date"])->format('F jS, Y');
-                $bill["consumer_id"] =  str_pad($bill["consumer_id"], 10, '0', STR_PAD_LEFT);
+                $bill["consumer_id"] =  str_pad($bill["consumer_id"], 6, '0', STR_PAD_LEFT);
                 if(count($bill["reading"])!==0){
                     $bill["reading"] = $bill["reading"][0];
                 }

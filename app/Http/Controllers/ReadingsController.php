@@ -75,7 +75,7 @@ class ReadingsController extends Controller
             $read["consumer_name"] = $read["consumer"]["first_name"]." ".$read["consumer"]["middle_name"]." ".$read["consumer"]["last_name"];
             $read["barangay"] = BarangayPurok::where("brgyprk_id", $read["consumer"]["brgyprk_id"])->pluck("barangay")[0];
             $read["purok"] = BarangayPurok::where("brgyprk_id", $read["consumer"]["brgyprk_id"])->pluck("purok")[0];
-            $read["consumer_id"] =  str_pad($read["consumer_id"], 10, '0', STR_PAD_LEFT);
+            $read["consumer_id"] =  str_pad($read["consumer_id"], 6, '0', STR_PAD_LEFT);
         }
         return response()->json([
             "status"=>true,
@@ -129,7 +129,7 @@ class ReadingsController extends Controller
         $consumer["purok"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("purok")[0];
         $consumer["consumer_name"] = $consumer["first_name"]." ".$consumer["middle_name"]." ".$consumer["last_name"];
         $reading = Reading::where("consumer_id", $id)->latest()->first();
-        $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 10, '0', STR_PAD_LEFT);
+        $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 6, '0', STR_PAD_LEFT);
         $consumer["service_period"] = null;
         $consumer["reading"] = $reading;
         $consumer["billing"] = null;
@@ -220,7 +220,7 @@ class ReadingsController extends Controller
         $service_period = ServicePeriod::where("service_period_id", $service_period_id)->pluck("service_period")[0];
         foreach($consumers as $consumer){
             $consumer["service_period_id"] = null;
-            $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 10, '0', STR_PAD_LEFT);
+            $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 6, '0', STR_PAD_LEFT);
             $consumer["barangay"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("barangay")[0];
             $consumer["purok"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("purok")[0];
             $reading  = Reading::where("consumer_id", $consumer["consumer_id"])->latest()->first();
@@ -228,6 +228,37 @@ class ReadingsController extends Controller
             $consumer["service_period"] = $service_period;
             if($reading){
                 $consumer["service_period_id"] = $reading["service_period_id"];
+            }
+        }
+        return json_decode($consumers);
+    }
+    public function toReadConsumersByBarangay($barangay, $purok){
+        $brgyprk = BarangayPurok::where("barangay", $barangay)->where("purok", $purok)->pluck("brgyprk_id")[0];
+        $consumers = Consumer::where("brgyprk_id", $brgyprk)->get();
+        $dateAfter = Carbon::now()->subMonth()->format('Y')."-".Carbon::now()->subMonth()->shortEnglishMonth;
+        $service_period_id = ServicePeriod::where("service_period", $dateAfter)->pluck("service_period_id")[0];
+        $service_period = ServicePeriod::where("service_period_id", $service_period_id)->pluck("service_period")[0];
+        foreach($consumers as $consumer){
+            $consumer["service_period_id"] = null;
+            $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 6, '0', STR_PAD_LEFT);
+            $consumer["barangay"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("barangay")[0];
+            $consumer["purok"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("purok")[0];
+            $reading  = Reading::where("consumer_id", $consumer["consumer_id"])->latest()->first();
+            $consumer["service_period_id_to_be"] = $service_period_id;
+            $consumer["service_period"] = $service_period;
+            $consumer["service_period_id"] = "";
+            $consumer["reading_id"] = "";
+            $consumer["previous_reading"] = "";
+            $consumer["present_reading"] = "";
+            $consumer["reading_date"] = "";
+            $consumer["reading_latest"] = null;
+            $consumer["reading_img"] = "";
+            if($reading){
+                $consumer["service_period_id"] = $reading["service_period_id"];
+                $consumer["reading_id"] = $reading['reading_id'];
+                $consumer["previous_reading"] = $reading['previous_reading'];
+                $consumer["present_reading"] = $reading['present_reading'];
+                $consumer["reading_date"] = $reading['reading_date'];
             }
         }
         return json_decode($consumers);
