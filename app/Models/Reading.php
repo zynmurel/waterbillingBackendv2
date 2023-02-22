@@ -19,6 +19,7 @@ class Reading extends Model
         "service_period_id",
         "previous_reading",
         "present_reading",
+        "proof_image",
         "reading_date"
     ];
 
@@ -45,6 +46,7 @@ class Reading extends Model
         $row['reader_id'] = Consumer::getConsumerIdBasedFromEmail($row['reader']);
         $row['consumer_id'] = Consumer::getConsumerIdBasedFromEmail($row['consumer']);
         $row['service_period_id'] = ServicePeriod::getServicePeriodId($row['service_period']);
+        $row['proof_image'] = '';
         $fields = app(Reading::class)->getFillable();
         $reading = array();
         foreach ($fields as $field) {

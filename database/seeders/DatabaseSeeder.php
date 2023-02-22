@@ -85,12 +85,10 @@ class DatabaseSeeder extends Seeder
         foreach($data as $row) {
             if ($row['email'] == '' || $row['first_name'] == '' || $row['last_name'] == '') continue;
             $success = Consumer::addNewConsumer($row);
-            if ($success['user']) {
                 print "\n\tUser {$row['email']} successfully saved!!!";
-                if ($success['consumer']) {
                     print "\n\tConsumer {$row['last_name']}, {$row['first_name']} successfully saved!!!\n";
-                }
-            }
+                
+            
         }
     }
 

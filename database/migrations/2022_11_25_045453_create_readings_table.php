@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('service_period_id');
             $table->integer('previous_reading');
             $table->integer('present_reading');
+            $table->text('proof_image')->nullable();
             $table->integer('reading_date');
             $table->unique(['consumer_id','service_period_id']);
             $table->timestamps();

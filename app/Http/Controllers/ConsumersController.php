@@ -46,11 +46,20 @@ class ConsumersController extends Controller
     {
         $body = $request->getContent();
         $input = json_decode($body, true);
-
-        $newConsumer =Consumer::addNewConsumer($input); 
+        $continue = Consumer::where('serial_no', $request->serial_no)->get();
+        if(sizeof($continue) == 0){
+            $continue =Consumer::addNewConsumer($input);
+            // return response()->json(['message' => 'Resource not found.',
+            // "email"=>$continue], 404);
+        }else{
+            return response()->json(['message' => 'This Serial Number is already used by Consumer ID No '.str_pad($continue[0]->consumer_id, 6, '0', STR_PAD_LEFT),
+            "email"=>$continue], 404);
+        } 
 
         return response()->json([
-            "data"=>$input
+            "data"=>$request->first_name,
+            "email"=>$continue
+
         ]);
     }
 

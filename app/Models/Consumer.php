@@ -42,6 +42,7 @@ class Consumer extends Model
             ->get();
         foreach ($results as $key => $row) {
             $results[$key]->user_type = User::where("user_id", $results[$key]->user_id)->pluck("user_type")[0];
+            $results[$key]->user_name = User::where("user_id", $results[$key]->user_id)->pluck("email")[0];
             $results[$key]->consumer_id = str_pad($row->consumer_id, 6, '0', STR_PAD_LEFT);
             $bgry_prk = BarangayPurok::getBrgyPrkData($row->brgyprk_id);
             $results[$key]->barangay = $bgry_prk['barangay'];
@@ -58,7 +59,7 @@ class Consumer extends Model
     static function addNewConsumer($row)
     {
         # Populate users table
-        $row['email'] = preg_replace('/\s+/', '', strtolower($row['email']));
+        $row['email'] = preg_replace('/\s+/', '', $row['email']);
         $fields = app(User::class)->getFillable();
         $user = array();
         foreach ($fields as $field) {
@@ -87,7 +88,7 @@ class Consumer extends Model
             }
         }
 
-        return $success;
+        return $row['email'];
     }
 
     static function getConsumerIdBasedFromEmail($email)

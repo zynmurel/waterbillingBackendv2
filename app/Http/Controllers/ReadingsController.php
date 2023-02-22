@@ -123,7 +123,7 @@ class ReadingsController extends Controller
         ],200);
     }
 
-    public function inquire($id)
+    public function inquirecomment($id)
     {  $consumer = Consumer::where("consumer_id", $id)->get()[0];
         $consumer["barangay"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("barangay")[0];
         $consumer["purok"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("purok")[0];
@@ -149,6 +149,47 @@ class ReadingsController extends Controller
             "message"=> "Inquire is found",
             "id"=>$id,
             "billing"=>$consumer
+        ],200);
+    }
+    public function inquire($id)
+    {  $consumer = Consumer::where("consumer_id", $id)->get()[0];
+        $consumer["barangay"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("barangay")[0];
+        $consumer["purok"] = BarangayPurok::where("brgyprk_id", $consumer["brgyprk_id"])->pluck("purok")[0];
+        $consumer["consumer_name"] = $consumer["first_name"]." ".$consumer["middle_name"]." ".$consumer["last_name"];
+        $billingtoloop = Billing::where("consumer_id", $id)->orderBy('created_at', 'desc')->get();
+        $reading = [];
+        $consumer['balance']=0;
+        $balance = Billing::where('consumer_id', $id)->where('previous_payment', '!=', '0')->latest()->first();
+        if($balance){
+            $consumer['balance'] = $balance->previous_bill+$balance->penalty+$balance->present_bill - $balance->previous_payment;
+        }
+        $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 6, '0', STR_PAD_LEFT);
+        $consumer["service_period"] = null;
+        $consumer["reading"] = $reading;
+        $consumer["billing"] = null;
+        $consumer["payment"] = null;
+        $readings= "";
+        if($billingtoloop){
+            foreach($billingtoloop as $bl){
+                if(!$bl->previous_payment){
+                    $reading[] = $bl;
+                    $readings = Reading::where('consumer_id', $bl->consumer_id)->where('service_period_id',$bl->service_period_id)->get()[0];
+                    $bl['total_cuM'] = $readings['present_reading'] - $readings['previous_reading'];
+                    $bl['service_period'] = ServicePeriod::where('service_period_id', $bl->service_period_id)->pluck("service_period")[0];
+                }else{
+                    break;
+                }
+            }
+        }
+
+        return response()->json([
+            "status"=>true,
+            "message"=> "Inquire is found",
+            "id"=>$id,
+            "billing"=>$consumer,
+            "listofbill" =>$reading,
+            "sampleread" => $readings,
+            'bal' =>$consumer['balance'],
         ],200);
     }
     
@@ -208,13 +249,14 @@ class ReadingsController extends Controller
         $consumerReport["totalConsumers"] = Consumer::all()->count();
         $consumerReport["totalDelinquent"] = Consumer::where("delinquent", 1)->count();
         $consumerReport["totalDisconnected"] = Consumer::where("status", "Disconnected")->count();
+        $consumerReport["totalConnected"] = Consumer::where("status", "Connected")->count();
         
         return response()->json([
             "consumerReport"=>$consumerReport
         ],200);
     }
     public function toReadConsumers(){
-        $consumers = Consumer::all();
+        $consumers = Consumer::where("status" ,'Connected')->get();
         $dateAfter = Carbon::now()->subMonth()->format('Y')."-".Carbon::now()->subMonth()->shortEnglishMonth;
         $service_period_id = ServicePeriod::where("service_period", $dateAfter)->pluck("service_period_id")[0];
         $service_period = ServicePeriod::where("service_period_id", $service_period_id)->pluck("service_period")[0];
@@ -234,7 +276,7 @@ class ReadingsController extends Controller
     }
     public function toReadConsumersByBarangay($barangay, $purok){
         $brgyprk = BarangayPurok::where("barangay", $barangay)->where("purok", $purok)->pluck("brgyprk_id")[0];
-        $consumers = Consumer::where("brgyprk_id", $brgyprk)->get();
+        $consumers = Consumer::where("brgyprk_id", $brgyprk)->where("status" ,'Connected')->get();
         $dateAfter = Carbon::now()->subMonth()->format('Y')."-".Carbon::now()->subMonth()->shortEnglishMonth;
         $service_period_id = ServicePeriod::where("service_period", $dateAfter)->pluck("service_period_id")[0];
         $service_period = ServicePeriod::where("service_period_id", $service_period_id)->pluck("service_period")[0];
@@ -249,7 +291,7 @@ class ReadingsController extends Controller
             $consumer["service_period_id"] = "";
             $consumer["reading_id"] = "";
             $consumer["previous_reading"] = "";
-            $consumer["present_reading"] = "";
+            $consumer["present_reading"] = $consumer['first_reading'];
             $consumer["reading_date"] = "";
             $consumer["reading_latest"] = null;
             $consumer["reading_img"] = "";
@@ -262,6 +304,47 @@ class ReadingsController extends Controller
             }
         }
         return json_decode($consumers);
+    }
+    public function generateDelinquents(){
+        $consumers = Consumer::where('status', '!=', 'Archive')->get();
+        $billing=[];
+        $delinquents = [];
+        foreach($consumers as $consumer){
+            $billing = Billing::where('consumer_id', $consumer->consumer_id)->orderBy('created_at', 'desc')->get();
+            if($billing){
+                $count = 0;
+                foreach($billing as $bill){
+                    //echo $bill->billing_id.'-'.$count." ";
+                    if(!$bill->previous_payment){
+                        $count = $count+1;
+                        if($count==2){
+                            $update = Consumer::where('consumer_id', $bill->consumer_id)->update(['delinquent'=> 1]);
+                            $delinquentConsumerData = Consumer::where('consumer_id', $bill->consumer_id)->get()[0];
+                            $delinquents[] = $delinquentConsumerData;
+                            break;
+                        }
+                    }else{
+                        break;
+                    }
+                }
+                foreach($billing as $bill){
+                    //echo $bill->billing_id.'-'.$count." ";
+                    if(!$bill->previous_payment){
+                        $penaltypercent = Settings::where("setting_key", 2)->pluck("setting_value")[0];
+                        $consumer = Consumer::where('consumer_id', $bill->consumer_id)->get()[0];
+                        if($consumer->delinquent===1){
+                            $updatebill = Billing::where('billing_id', $bill->billing_id)->update(['penalty'=>$bill->present_bill*($penaltypercent/100)]);
+                            
+                        }
+                    }else{
+                        break;
+                    }
+                }
+            }
+        }
+        return response()->json([
+            "delinquents"=>$delinquents,
+        ],200);
     }
     public function findBillReading($id){
         $billread["bill"] = Billing::where("consumer_id", $id)->latest()->first();

@@ -42,6 +42,7 @@ Route::post('/register',[AuthController::class,'register']);
     Route::get('/toReadConsumers/{barangay}/{purok}', [ReadingsController::class, 'toReadConsumersByBarangay']);
     Route::get('/findBillReading/{id}', [ReadingsController::class, 'findBillReading']);
     Route::post('/storeBillReading', [ReadingsController::class, 'storeBillReading']);
+    Route::get('/generateDelinquents', [ReadingsController::class, 'generateDelinquents']);
 
     Route::get('/showReadBillPayConsumer/{id}/', [BillingController::class, 'showReadBillPayConsumer']);
     Route::resource('/billing', BillingController::class);

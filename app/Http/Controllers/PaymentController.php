@@ -15,16 +15,16 @@ class PaymentController extends Controller
         $payment = [
             "cashier_id" => $request->cashier_id,
             "consumer_id" => $request->consumer_id,
-            "service_period_id" => $request->service_period_id,
+            "service_period_id" => Billing::where('consumer_id', $id)->latest()->first()['service_period_id'],
             "date_paid" => $request->date_paid,
             "amount_paid" => $request->amount_paid
         ];
         $createdPayment = Payment::create($payment);
         $consumer = Consumer::where("consumer_id", $id)->update(["delinquent"=>0]);
-        $previous_billing = Billing::where("consumer_id", $id)->where("service_period_id", $request->service_period_id)->pluck("previous_payment")[0];
+        $previous_billing = Billing::where("consumer_id", $id)->where("service_period_id", $payment['service_period_id'])->pluck("previous_payment")[0];
         $number = collect([ floatval($previous_billing), floatval($request->amount_paid)]);
         $sum =$number->sum();
-        $billing = Billing::where("consumer_id", $id)->where("service_period_id", $request->service_period_id)->update(["previous_payment"=>$sum]);
+        $billing = Billing::where("consumer_id", $id)->where("service_period_id", $payment['service_period_id'])->update(["previous_payment"=>$sum]);
 
         return response()->json([
             "status"=>true,
