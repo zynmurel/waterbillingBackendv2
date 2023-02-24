@@ -16,11 +16,13 @@ class SettingsController extends Controller
     public function index()
     {
         $settings = Settings::getSettings();
+        $json_setting = Settings::where("setting_key", 3)->pluck("setting_value")[0];
 
         return response()->json([
             "status"=>true,
             "message"=> "Collection Report is found",
-            "collectionReport"=>$settings
+            "collectionReport"=>$settings,
+            "cubic_rates" => $json_setting
         ],200);
     }
 

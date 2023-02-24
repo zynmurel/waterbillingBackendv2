@@ -276,10 +276,11 @@ class ReadingsController extends Controller
     }
     public function toReadConsumersByBarangay($barangay, $purok){
         $brgyprk = BarangayPurok::where("barangay", $barangay)->where("purok", $purok)->pluck("brgyprk_id")[0];
-        $consumers = Consumer::where("brgyprk_id", $brgyprk)->where("status" ,'Connected')->get();
         $dateAfter = Carbon::now()->subMonth()->format('Y')."-".Carbon::now()->subMonth()->shortEnglishMonth;
         $service_period_id = ServicePeriod::where("service_period", $dateAfter)->pluck("service_period_id")[0];
+        $consumers = Consumer::where("brgyprk_id", $brgyprk)->where("status" ,'Connected')->get();
         $service_period = ServicePeriod::where("service_period_id", $service_period_id)->pluck("service_period")[0];
+        $topush = [];
         foreach($consumers as $consumer){
             $consumer["service_period_id"] = null;
             $consumer["consumer_id"] = str_pad($consumer["consumer_id"], 6, '0', STR_PAD_LEFT);
@@ -295,6 +296,7 @@ class ReadingsController extends Controller
             $consumer["reading_date"] = "";
             $consumer["reading_latest"] = null;
             $consumer["reading_img"] = "";
+            $consumer["usage_type"] = $consumer->usage_type;
             if($reading){
                 $consumer["service_period_id"] = $reading["service_period_id"];
                 $consumer["reading_id"] = $reading['reading_id'];
@@ -302,14 +304,21 @@ class ReadingsController extends Controller
                 $consumer["present_reading"] = $reading['present_reading'];
                 $consumer["reading_date"] = $reading['reading_date'];
             }
+            $ifReaded = Reading::where("consumer_id", $consumer["consumer_id"])->where("service_period_id", $service_period_id)->latest()->first();
+            if(!$ifReaded){
+                $topush[] = $consumer;
+            }
+
+            
         }
-        return json_decode($consumers);
+        return $topush;
     }
     public function generateDelinquents(){
         $consumers = Consumer::where('status', '!=', 'Archive')->get();
         $billing=[];
         $delinquents = [];
         foreach($consumers as $consumer){
+            $storedbill = [];
             $billing = Billing::where('consumer_id', $consumer->consumer_id)->orderBy('created_at', 'desc')->get();
             if($billing){
                 $count = 0;
@@ -334,12 +343,27 @@ class ReadingsController extends Controller
                         $consumer = Consumer::where('consumer_id', $bill->consumer_id)->get()[0];
                         if($consumer->delinquent===1){
                             $updatebill = Billing::where('billing_id', $bill->billing_id)->update(['penalty'=>$bill->present_bill*($penaltypercent/100)]);
-                            
+                            $storedbill[] = Billing::where('billing_id', $bill->billing_id)->get()[0];
                         }
                     }else{
                         break;
                     }
                 }
+            }
+            $reverse_stored_bill = array_reverse($storedbill);
+            $bill_count = 0;
+            foreach($reverse_stored_bill as $index => $bill){
+                $bill_prev = Billing::where('billing_id', $bill->billing_id)->pluck('previous_bill')[0];
+                $bill_penalty = Billing::where('billing_id', $bill->billing_id)->pluck('penalty')[0];
+                $bill_pres = Billing::where('billing_id', $bill->billing_id)->pluck('present_bill')[0];
+                if($index===0){
+                    Billing::where('billing_id', $bill->billing_id)->update(['previous_bill'=>$bill_prev]);
+                    echo $bill_prev."-prev ";
+                }else{
+                    Billing::where('billing_id', $bill->billing_id)->update(['previous_bill'=>$bill_count]);
+                    echo $bill_count."-count ";
+                }
+                $bill_count = $bill_pres + $bill_penalty + $bill_prev;
             }
         }
         return response()->json([
@@ -357,6 +381,50 @@ class ReadingsController extends Controller
     }
 
     public function storeBillReading(StoreBillingReadingRequest $request)
+    {
+        $reading = [
+        "reader_id" => $request->reader_id,
+        "consumer_id" =>$request->consumer_id,
+        "service_period_id" =>$request->service_period_id,
+        "previous_reading" =>$request->previous_reading,
+        "present_reading" =>$request->present_reading,
+        "reading_date" => $request->reading_date,
+        "proof_image"=>$request->proof_image
+    ];
+    $bill = Billing::where("consumer_id", $request->consumer_id)->latest()->first();
+    $penalty = Settings::where("setting_key", 2)->pluck("setting_value")[0];
+    $isDelinquent = Consumer::where("consumer_id", $request->consumer_id)->pluck("delinquent")[0];
+    $isPenalty = 0;
+    if($isDelinquent!==0){
+        $isPenalty = ($penalty/100)*$request->present_bill;
+    }
+        $prevbill = 0;
+        if($bill){
+            $prevbill = ($bill->previous_bill-$bill->previous_payment)+$bill->penalty+$bill->present_bill;
+        }
+        $billing =[
+            "consumer_id" =>$request->consumer_id,
+            "service_period_id" =>$request->service_period_id,
+            "due_date"=>$request->due_date,
+            "previous_bill"=>$prevbill,
+            "previous_payment"=>0,
+            "penalty"=>$isPenalty,
+            "present_bill"=>$request->present_bill
+        ];
+        $proceed = Reading::where('consumer_id', $request->consumer_id)->where('service_period_id', $request->service_period_id)->get();
+        if(count($proceed)===0){
+            $createdReading = Reading::create($reading);
+            $createdBilling = Billing::create($billing);
+        }
+        return response()->json([
+            "status"=>$billing,
+            "message"=> "stored succesfully",
+            //"reading"=>$createdReading,
+            //"billing"=>$createdBilling,
+            //"reading"=>$createdReading,
+        ],200);
+    }
+    public function storeBillReadingMobile(StoreBillingReadingRequest $request)
     {
         $reading = [
         "reader_id" => $request->reader_id,

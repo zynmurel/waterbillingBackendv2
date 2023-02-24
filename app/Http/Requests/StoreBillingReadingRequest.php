@@ -31,10 +31,8 @@ class StoreBillingReadingRequest extends FormRequest
             "present_reading" =>"required|max:50",
             "reading_date" =>"required|max:150",
             "due_date" =>"required|max:50",
-            "previous_bill" =>"required|max:50",
-            "previous_payment" =>"required|max:50",
-            "penalty" =>"required|max:50",
-            "present_bill" =>"required|max:50"
+            "present_bill" =>"required|max:50",
+            "proof_image"=>"required"
         ];
     }
 }
