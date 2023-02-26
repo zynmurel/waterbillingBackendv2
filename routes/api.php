@@ -6,6 +6,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ConsumersController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReadingsController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\ServicePeriodController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
@@ -42,13 +43,15 @@ Route::post('/register',[AuthController::class,'register']);
     Route::get('/toReadConsumers/{barangay}/{purok}', [ReadingsController::class, 'toReadConsumersByBarangay']);
     Route::get('/findBillReading/{id}', [ReadingsController::class, 'findBillReading']);
     Route::post('/storeBillReading', [ReadingsController::class, 'storeBillReading']);
-    Route::get('/generateDelinquents', [ReadingsController::class, 'generateDelinquents']);
+    Route::put('/generateDelinquents', [ReadingsController::class, 'generateDelinquents']);
+    Route::get('/isGenerate/{year}/{month}',[ReadingsController::class, 'isGenerate']);
 
     Route::get('/showReadBillPayConsumer/{id}/', [BillingController::class, 'showReadBillPayConsumer']);
     Route::resource('/billing', BillingController::class);
 
     Route::resource('/settings', SettingsController::class);
     Route::put("settingUpdate/{id}", [SettingsController::class, 'updateSettings']);
+    Route::get('/getPaymentReports/{year}/{month}', [ReportsController::class, 'getPaymentReports']);
 
     Route::post("storePayment/{id}", [PaymentController::class, 'storePayment']);
 

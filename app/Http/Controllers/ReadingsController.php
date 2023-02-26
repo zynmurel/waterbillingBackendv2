@@ -80,7 +80,7 @@ class ReadingsController extends Controller
         return response()->json([
             "status"=>true,
             "message"=> "Date is found",
-            "newReading"=>$readings
+            "newReading"=>collect($readings)->sortBy('consumer_id')->values()->all()
         ],200);
     }
 
@@ -223,26 +223,6 @@ class ReadingsController extends Controller
             "newReading"=>$meterReading,
         ],200);
     }
-
-    public function collectionReports($year, $month)
-    {
-        $collectionReport =[];
-        $service_period_id = ServicePeriod::where("service_period", $year."-".$month)->pluck("service_period_id")[0];
-        if($service_period_id){
-        $collectionReport["totalBilling"] = Billing::where("service_period_id", $service_period_id)->count();
-        $collectionReport["totalPayments"] = Payment::where("service_period_id", $service_period_id)->count();
-        $collectionReport["service_period_id"] = ServicePeriod::where("service_period", $year."-".$month)->pluck("service_period")[0];
-        $collectionReport["totalCollection"] = Payment::where('service_period_id', $service_period_id)->sum("amount_paid");
-        }
-
-        
-        return response()->json([
-            "status"=>true,
-            "message"=> "Collection Report is found",
-            "collectionReport"=>$collectionReport,
-            "consumers" => ReadingsController::consumerReport()
-        ],200);
-    }
     public function consumerReport()
     {
         $consumerReport = [];
@@ -313,6 +293,53 @@ class ReadingsController extends Controller
         }
         return $topush;
     }
+
+
+    public function collectionReports($year, $month)
+    {
+        $collectionReport =[];
+        $service_period_id = ServicePeriod::where("service_period", $year."-".$month)->pluck("service_period_id")[0];
+        if($service_period_id){
+        $collectionReport["totalBilling"] = Billing::where("service_period_id", $service_period_id)->count();
+        $collectionReport["totalPayments"] = Payment::where("service_period_id", $service_period_id)->count();
+        $collectionReport["service_period_id"] = ServicePeriod::where("service_period", $year."-".$month)->pluck("service_period")[0];
+        $collectionReport["totalCollection"] = Payment::where('service_period_id', $service_period_id)->sum("amount_paid");
+        }
+
+        
+        return response()->json([
+            "status"=>true,
+            "message"=> "Collection Report is found",
+            "collectionReport"=>$collectionReport,
+            "consumers" => ReadingsController::consumerReport()
+        ],200);
+    }
+    public function isGenerate($year, $month){
+        $service_period_id = ServicePeriod::where("service_period", $year."-".$month)->pluck("service_period_id")[0];
+        $thereisdelinquent = Billing::where('service_period_id', $service_period_id)->where('previous_payment','=', 0)->where('penalty','=', 0)->get();
+        if(count($thereisdelinquent)!=0){
+            foreach($thereisdelinquent as $delin){
+                $consumer = Consumer::where('consumer_id', $delin->consumer_id)->get()[0];
+                $brgyprk = BarangayPurok::where('brgyprk_id', $consumer->brgyprk_id)->get()[0];
+                $delin['consumer_name'] = $consumer->first_name." ".$consumer->middle_name[0].". ".$consumer->last_name;
+                $delin['barangay'] = $brgyprk->barangay;
+                $delin['purok'] = $brgyprk->purok;
+            }
+        }
+        $due_date = Settings::where("setting_key", 1)->pluck("setting_value")[0];
+        $date = Carbon::now();
+        $dayOfMonth = $date->format('d');
+        if($dayOfMonth>=$due_date){
+        return response()->json([
+            "delinquents"=>collect($thereisdelinquent)->sortBy('consumer_id')->sortBy('barangay')->values()->all(),
+        ],200);
+        }
+
+        return response()->json([
+            "delinquents"=>[],
+        ],200);
+        
+    }
     public function generateDelinquents(){
         $consumers = Consumer::where('status', '!=', 'Archive')->get();
         $billing=[];
@@ -325,8 +352,11 @@ class ReadingsController extends Controller
                 foreach($billing as $bill){
                     //echo $bill->billing_id.'-'.$count." ";
                     if(!$bill->previous_payment){
+                        $due_date = Settings::where("setting_key", 1)->pluck("setting_value")[0];
+                        $date = Carbon::now();
+                        $dayOfMonth = $date->format('d');
                         $count = $count+1;
-                        if($count==2){
+                        if($dayOfMonth>=$due_date){
                             $update = Consumer::where('consumer_id', $bill->consumer_id)->update(['delinquent'=> 1]);
                             $delinquentConsumerData = Consumer::where('consumer_id', $bill->consumer_id)->get()[0];
                             $delinquents[] = $delinquentConsumerData;

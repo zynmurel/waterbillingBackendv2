@@ -86,7 +86,7 @@ class UserController extends Controller
         ];
         User::where('user_id', $id) ->update($newemail);
         return response()->json([
-            "data"=>"email updated!",
+            "data"=>"username updated!",
             "consumer"=>$newemail
         ]);
     }
