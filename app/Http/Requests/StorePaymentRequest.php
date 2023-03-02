@@ -27,7 +27,7 @@ class StorePaymentRequest extends FormRequest
             "cashier_id" => "required|max:20",
             "consumer_id" => "required|max:20",
             "date_paid" => "required|max:50",
-            "amount_paid" =>"required|max:20"
+            "amount_paid" =>"required|max:20" 
         ];
     }
 }

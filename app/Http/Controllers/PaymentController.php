@@ -19,7 +19,7 @@ class PaymentController extends Controller
             "date_paid" => $request->date_paid,
             "amount_paid" => $request->amount_paid
         ];
-        $createdPayment = Payment::create($payment);
+        $createdPayment = Payment::create($payment); 
         $consumer = Consumer::where("consumer_id", $id)->update(["delinquent"=>0]);
         $previous_billing = Billing::where("consumer_id", $id)->where("service_period_id", $payment['service_period_id'])->pluck("previous_payment")[0];
         $number = collect([ floatval($previous_billing), floatval($request->amount_paid)]);
