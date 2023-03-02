@@ -36,7 +36,7 @@ class UpdateConsumerRequest extends FormRequest
             "household_no" => "required|max:100",
             "first_reading" => "required|max:20",
             "usage_type" => "required|max:20",
-            "serial_no" => "required|max:50",
+            "serial_no" => "required|max:100",
             "brand" => "required|max:20",
             "status" => "required|max:20",
             "delinquent" => "required|max:20",

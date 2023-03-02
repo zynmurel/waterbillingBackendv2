@@ -14,6 +14,7 @@ use App\Models\Settings;
 use Carbon\Carbon;
 use Dotenv\Store\File\Reader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ReadingsController extends Controller
 {
@@ -321,7 +322,7 @@ class ReadingsController extends Controller
             foreach($thereisdelinquent as $delin){
                 $consumer = Consumer::where('consumer_id', $delin->consumer_id)->get()[0];
                 $brgyprk = BarangayPurok::where('brgyprk_id', $consumer->brgyprk_id)->get()[0];
-                $delin['consumer_name'] = $consumer->first_name." ".$consumer->middle_name[0].". ".$consumer->last_name;
+                $delin['consumer_name'] = $consumer->first_name." ".Str::substr($consumer->middle_name, 0, 1).". ".$consumer->last_name;
                 $delin['barangay'] = $brgyprk->barangay;
                 $delin['purok'] = $brgyprk->purok;
             }
@@ -331,7 +332,7 @@ class ReadingsController extends Controller
         $dayOfMonth = $date->format('d');
         if($dayOfMonth>=$due_date){
         return response()->json([
-            "delinquents"=>collect($thereisdelinquent)->sortBy('consumer_id')->sortBy('barangay')->values()->all(),
+            "delinquents"=>collect($thereisdelinquent)->sortBy('consumer_id')->sortBy('barangay')->values()->all()
         ],200);
         }
 

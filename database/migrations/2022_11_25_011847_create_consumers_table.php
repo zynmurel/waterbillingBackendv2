@@ -25,10 +25,10 @@ return new class extends Migration
             $table->string('civil_status', 15);
             $table->string('name_of_spouse')->nullable();
             $table->integer('brgyprk_id');
-            $table->integer('household_no');
+            $table->bigInteger('household_no');
             $table->integer('first_reading');
             $table->string('usage_type', 15);
-            $table->integer('serial_no');
+            $table->bigInteger('serial_no');
             $table->string('brand', 20);
             $table->string('status', 20);
             $table->boolean('delinquent');

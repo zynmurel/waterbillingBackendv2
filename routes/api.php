@@ -30,6 +30,7 @@ Route::post('/register',[AuthController::class,'register']);
     Route::resource('/brgyprk', BarangayPuroksController::class);
 
     Route::resource('/consumer', ConsumersController::class);
+    Route::resource('/user', UserController::class);
     Route::get('/consumer/{consumer}', [ConsumersController::class, 'show']);
 
     Route::resource('/reading', ReadingsController::class);
